@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "208926840684",
+    "project_id": "base-app-f5a6e",
+    "storage_bucket": "base-app-f5a6e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208926840684:android:2d6299af884424c280c549",
+        "android_client_info": {
+          "package_name": "com.example.flutter_firebase_boilerplate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjBKKq6r9MctUNZou3tlBAI6h3FIW8V3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
