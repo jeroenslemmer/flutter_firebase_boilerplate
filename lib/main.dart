@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           }
 
           if (snapshot.hasData) {
-            return const HomeScreen();
+            return HomeScreen();
           } else {
             return const LoginScreen();
           }

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'auth_controller.dart';
 
+const gapS = SizedBox(height: 8);
+const gapM = SizedBox(height: 16);
+const gapL = SizedBox(height: 24);
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -34,7 +38,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
     setState(() => _loading = false);
   }
+  Future<void> _loginWithGoogle() async {
+  setState(() => _loading = true);
 
+  try {
+    await _authController.signInWithGoogle();
+  } catch (e) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
+    }
+  }
+
+  if (mounted) {
+    setState(() => _loading = false);
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +64,8 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text("Login", style: TextStyle(fontSize: 24)),
-            const SizedBox(height: 20),
+
+            gapL,
 
             TextField(
               controller: _emailController,
@@ -57,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: const InputDecoration(labelText: "Password"),
             ),
 
-            const SizedBox(height: 20),
+            gapL,
 
             _loading
                 ? const CircularProgressIndicator()
@@ -65,7 +86,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: _login,
                     child: const Text("Login"),
                   ),
-          ],
+                  
+            gapS,
+
+            ElevatedButton(
+              onPressed: _loginWithGoogle,
+              child: const Text("Sign in with Google"),
+            ),
+                            ],
         ),
       ),
     );
