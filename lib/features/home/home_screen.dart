@@ -1,5 +1,6 @@
 import '../../core/firebase/auth_service.dart';
 import 'package:flutter/material.dart';
+import '../../core/widgets/debug_info.dart';  
 
 
 class HomeScreen extends StatelessWidget {
@@ -29,6 +30,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             Text("Home (logged in) 🚀"),
             // Text(FirebaseAuth.instance.currentUser?.email ?? 'geen email')
+                const Spacer(),
+                const DebugInfo(),
           ],
         ),
       ),
