@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../core/firebase/auth_service.dart';
+import '../../core/models/app_user.dart';
 
 class AuthController {
   final AuthService _authService = AuthService();
 
   Stream<User?> get authState => _authService.authStateChanges;
+
+  AppUser? get currentUser => _authService.currentAppUser();
 
   Future<void> signIn(String email, String password) async {
     await _authService.signIn(email, password);
