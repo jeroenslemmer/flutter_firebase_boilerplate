@@ -28,5 +28,14 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.208926840684-l4aacndb2dup0jkkoq2962hfi9ibtlkv</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
