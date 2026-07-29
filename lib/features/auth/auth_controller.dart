@@ -3,7 +3,10 @@ import '../../core/firebase/auth_service.dart';
 import '../../core/models/app_user.dart';
 
 class AuthController {
-  final AuthService _authService = AuthService();
+  final AuthService _authService;
+
+  AuthController(this._authService);
+  // final AuthService _authService = AuthService();
 
   Stream<User?> get authState => _authService.authStateChanges;
 

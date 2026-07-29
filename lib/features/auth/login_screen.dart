@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'auth_controller.dart';
+import 'auth_provider.dart';
 
 const gapS = SizedBox(height: 8);
 const gapM = SizedBox(height: 16);
 const gapL = SizedBox(height: 24);
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
+@override
+ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final AuthController _authController = AuthController();
+AuthController get _authController =>
+    ref.read(authControllerProvider);
 
   bool _loading = false;
 
