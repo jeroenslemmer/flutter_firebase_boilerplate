@@ -1,14 +1,14 @@
-import '../../core/firebase/auth_service.dart';
 import 'package:flutter/material.dart';
 import '../../core/widgets/debug_info.dart';  
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../auth/auth_provider.dart';
 
 
-class HomeScreen extends StatelessWidget {
-  final AuthService authService = AuthService();
-  HomeScreen({super.key});
+class HomeScreen extends ConsumerWidget {
+  const HomeScreen({super.key});
   
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref){
     return Scaffold(
       
       appBar: AppBar(
@@ -18,8 +18,7 @@ class HomeScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              // logout komt hier
-              authService.signOut();
+              ref.read(authControllerProvider).signOut();
             },
           ),
         ],
