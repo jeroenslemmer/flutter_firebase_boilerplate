@@ -25,7 +25,6 @@ AuthController get _authController =>
 
   Future<void> _login() async {
     setState(() => _loading = true);
-
     try {
       await _authController.signIn(
         _emailController.text,
@@ -37,26 +36,42 @@ AuthController get _authController =>
           SnackBar(content: Text(e.toString())),
         );
       }
+    } finally {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
     }
-
-    setState(() => _loading = false);
   }
   Future<void> _loginWithGoogle() async {
-  setState(() => _loading = true);
-
-  try {
-    await _authController.signInWithGoogle();
-  } catch (e) {
-    if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.toString())),
-      );
+    setState(() => _loading = true);
+    try {
+      await _authController.signInWithGoogle();
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString())),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _loading = false);
+      }
     }
-  }
+  // setState(() => _loading = true);
 
-  if (mounted) {
-    setState(() => _loading = false);
-  }
+  // try {
+  //   await _authController.signInWithGoogle();
+  // } catch (e) {
+  //   if (mounted) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text(e.toString())),
+  //     );
+  //   }
+  // }
+
+  // if (mounted) {
+  //   setState(() => _loading = false);
+  // }
 }
   @override
   Widget build(BuildContext context) {
@@ -86,19 +101,25 @@ AuthController get _authController =>
             _loading
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
-                    onPressed: _login,
+                    onPressed: _loading ? null : _login,
                     child: const Text("Login"),
                   ),
                   
             gapS,
 
             ElevatedButton(
-              onPressed: _loginWithGoogle,
+              onPressed: _loading ? null : _loginWithGoogle,
               child: const Text("Sign in with Google"),
             ),
                             ],
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }
