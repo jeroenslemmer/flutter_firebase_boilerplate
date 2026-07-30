@@ -61,6 +61,20 @@ class AuthService {
       photoUrl: user.photoURL,
     );
   }
+  Stream<AppUser?> get appUserChanges {
+    return _auth.authStateChanges().map((user) {
+      if (user == null) {
+        return null;
+      }
+
+      return AppUser(
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoUrl: user.photoURL,
+      );
+    });
+  }
 }
 
 
