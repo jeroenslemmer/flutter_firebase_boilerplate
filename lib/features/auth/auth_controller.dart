@@ -6,7 +6,6 @@ class AuthController {
   final AuthService _authService;
 
   AuthController(this._authService);
-  // final AuthService _authService = AuthService();
 
   Stream<User?> get authState => _authService.authStateChanges;
 

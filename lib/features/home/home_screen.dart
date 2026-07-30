@@ -9,31 +9,59 @@ class HomeScreen extends ConsumerWidget {
   
   @override
   Widget build(BuildContext context, WidgetRef ref){
-    return Scaffold(
-      
-      appBar: AppBar(
-        title: const Text('Home'),
-        
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              ref.read(authControllerProvider).signOut();
-            },
-          ),
-        ],
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Home (logged in) 🚀"),
-            // Text(FirebaseAuth.instance.currentUser?.email ?? 'geen email')
-                const Spacer(),
-                const DebugInfo(),
-          ],
+    final user = ref.watch(authStateProvider);
+    return user.when(
+      loading: () => const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
         ),
       ),
+
+      error: (error, stack) => Scaffold(
+        body: Center(
+          child: Text(error.toString()),
+        ),
+      ),
+
+      data: (appUser) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Home'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.logout),
+                onPressed: () {
+                  ref.read(authControllerProvider).signOut();
+                },
+              ),
+            ],
+          ),
+
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Welcome",
+                  style: TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  appUser?.email ?? "geen email",
+                ),
+                Text(
+                  appUser?.displayName ?? "geen naam",
+                ),
+                Text(
+                  appUser?.uid ?? "geen uid",
+                ),
+                const Spacer(),
+                const DebugInfo(),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
