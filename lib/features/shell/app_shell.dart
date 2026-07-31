@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';
+import '../profile/profile_screen.dart';
+import '../settings/settings_screen.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
@@ -15,15 +17,18 @@ class _AppShellState extends State<AppShell> {
 
   final List<Widget> _pages = [
     HomeScreen(),
-    const Placeholder(),
-    const Placeholder(),
+    const ProfileScreen(),
+    const SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: _pages[_index],
+      body: IndexedStack(
+        index: _index,
+        children: _pages,
+      ),
 
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,

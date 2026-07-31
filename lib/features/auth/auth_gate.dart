@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'auth_provider.dart';
-import '../home/home_screen.dart';
 import 'login_screen.dart';
 import '../shell/app_shell.dart';
 
