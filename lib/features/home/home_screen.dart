@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/widgets/debug_info.dart';  
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../auth/auth_provider.dart';
-
+// import '../auth/user_profile_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -10,6 +10,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref){
     final user = ref.watch(authStateProvider);
+    // final profile = ref.watch(userProfileProvider);
     return user.when(
       loading: () => const Scaffold(
         body: Center(

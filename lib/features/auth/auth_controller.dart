@@ -23,7 +23,7 @@ Future<void> signIn(String email, String password) async {
   final appUser = _authService.currentAppUser();
 
   if (appUser != null) {
-    await _firestoreService.createUserIfNeeded(appUser);
+    await _firestoreService.createUserIfNeeded(appUser.uid);
   }
 }
 
@@ -41,7 +41,7 @@ Future<void> signIn(String email, String password) async {
     final appUser = _authService.currentAppUser();
 
     if (appUser != null) {
-      await _firestoreService.createUserIfNeeded(appUser);
+      await _firestoreService.createUserIfNeeded(appUser.uid);
     }
   }
 }

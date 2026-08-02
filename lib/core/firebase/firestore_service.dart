@@ -1,22 +1,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../models/app_user.dart';
+import '../models/user_profile.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  Future<void> createUserIfNeeded(AppUser user) async {
-    final ref = _db.collection('users').doc(user.uid);
+  CollectionReference<Map<String, dynamic>> get users =>
+      _db.collection('users');
+
+  Future<void> createUserIfNeeded(String uid) async {
+    final ref = users.doc(uid);
 
     final snapshot = await ref.get();
 
     if (!snapshot.exists) {
       await ref.set({
-        'email': user.email,
-        'displayName': user.displayName,
-        'photoUrl': user.photoUrl,
         'createdAt': FieldValue.serverTimestamp(),
+        'lastLogin': FieldValue.serverTimestamp(),
+        'profileComplete': false,
+        'language': 'nl',
+        'themeMode': 'system',
+      });
+    } else {
+      await ref.update({
+        'lastLogin': FieldValue.serverTimestamp(),
       });
     }
+  }
+
+  Stream<UserProfile?> userProfile(String uid) {
+    return users.doc(uid).snapshots().map((snapshot) {
+      if (!snapshot.exists) {
+        return null;
+      }
+
+      return UserProfile.fromFirestore(
+        uid,
+        snapshot.data()!,
+      );
+    });
   }
 }
