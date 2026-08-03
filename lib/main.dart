@@ -4,6 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/firebase/firebase_service.dart';
 import 'core/router/app_router.dart';
 
+import 'features/settings/app_settings.dart';
+import 'features/settings/app_settings_provider.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -16,13 +19,25 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(appSettingsProvider);
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+
+      themeMode: switch (settings.themeMode) {
+        AppThemeMode.light => ThemeMode.light,
+        AppThemeMode.dark => ThemeMode.dark,
+        AppThemeMode.system => ThemeMode.system,
+      },
+
       routerConfig: appRouter,
     );
   }
