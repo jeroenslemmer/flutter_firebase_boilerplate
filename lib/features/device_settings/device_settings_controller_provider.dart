@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'app_settings_controller.dart';
+import 'device_settings_controller.dart';
 
-final appSettingsControllerProvider =
+final deviceSettingsControllerProvider =
     Provider<AppSettingsController>((ref) {
   return AppSettingsController(ref);
 });

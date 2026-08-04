@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'app_settings.dart';
-import 'app_settings_controller_provider.dart';
-import 'app_settings_provider.dart';
+import 'device_settings.dart';
+import 'device_settings_controller_provider.dart';
+import 'device_settings_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final settings = ref.watch(appSettingsProvider);
-    final controller = ref.read(appSettingsControllerProvider);
+    final settings = ref.watch(deviceSettingsProvider);
+    final controller = ref.read(deviceSettingsControllerProvider);
 
     return Scaffold(
       appBar: AppBar(

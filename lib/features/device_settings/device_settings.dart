@@ -4,22 +4,19 @@ enum AppThemeMode {
   dark,
 }
 
-class AppSettings {
+class DeviceSettings {
   final AppThemeMode themeMode;
-  final String language;
 
-  const AppSettings({
+  const DeviceSettings({
     this.themeMode = AppThemeMode.system,
-    this.language = 'nl',
   });
 
-  AppSettings copyWith({
+  DeviceSettings copyWith({
     AppThemeMode? themeMode,
     String? language,
   }) {
-    return AppSettings(
+    return DeviceSettings(
       themeMode: themeMode ?? this.themeMode,
-      language: language ?? this.language,
     );
   }
 }
