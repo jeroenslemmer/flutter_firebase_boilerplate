@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../core/preferences/preferences_service.dart';
+import '../../../core/preferences/preferences_service.dart';
 
-import '../../core/preferences/preferences_provider.dart';
+import '../../../core/preferences/preferences_provider.dart';
 import 'device_settings_controller.dart';
 
 final preferencesServiceProvider =

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'device_settings.dart';
-import 'device_settings_controller_provider.dart';
-import 'device_settings_provider.dart';
+import 'device/device_settings.dart';
+import 'device/device_settings_controller_provider.dart';
+import 'device/device_settings_provider.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});

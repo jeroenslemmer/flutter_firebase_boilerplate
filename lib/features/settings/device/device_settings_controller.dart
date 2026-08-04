@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'device_settings.dart';
 import 'device_settings_provider.dart';
-import '../../core/preferences/preferences_service.dart';
+import '../../../core/preferences/preferences_service.dart';
 
 class DeviceSettingsController {
   final Ref ref;

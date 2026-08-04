@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/firebase/firebase_service.dart';
 import 'core/router/app_router.dart';
 
-import 'features/device_settings/device_settings.dart';
-import 'features/device_settings/device_settings_provider.dart';
-import 'features/device_settings/device_settings_controller_provider.dart';
+import 'features/settings/device/device_settings.dart';
+import 'features/settings/device/device_settings_provider.dart';
+import 'features/settings/device/device_settings_controller_provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/preferences/preferences_provider.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
-import '../device_settings/settings_screen.dart';
+import '../settings/settings_screen.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
