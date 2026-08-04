@@ -27,21 +27,18 @@ class DeviceSettingsController {
   }
 
   Future<void> loadSettings() async {
-    final saved = _preferences.loadThemeMode();
-    if (saved == null) {
-      return;
-    }
+    final saved =
+        _preferences.loadThemeMode();
 
     final mode =
-      AppThemeMode.values.firstWhere(
-        (e) => e.name == saved,
-        orElse: () => AppThemeMode.system,
-      );
+        DeviceSettings.themeModeFromString(
+          saved,
+        );
 
     ref.read(deviceSettingsProvider.notifier).state =
-      settings.copyWith(
-        themeMode: mode,
-      );
-}
+        settings.copyWith(
+          themeMode: mode,
+        );
+  }
 
 }

@@ -1,17 +1,22 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesService {
-  static const String themeModeKey = 'themeMode';
+  static const _themeModeKey = 'themeMode';
 
   final SharedPreferences prefs;
 
   PreferencesService(this.prefs);
 
   Future<void> saveThemeMode(String value) async {
-    await prefs.setString(themeModeKey, value);
+    await prefs.setString(
+      _themeModeKey,
+      value,
+    );
   }
 
   String? loadThemeMode() {
-    return prefs.getString(themeModeKey);
+    return prefs.getString(
+      _themeModeKey,
+    );
   }
 }

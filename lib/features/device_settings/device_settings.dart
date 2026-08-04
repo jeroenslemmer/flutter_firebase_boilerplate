@@ -13,10 +13,20 @@ class DeviceSettings {
 
   DeviceSettings copyWith({
     AppThemeMode? themeMode,
-    String? language,
   }) {
     return DeviceSettings(
       themeMode: themeMode ?? this.themeMode,
+    );
+  }
+
+  String get themeModeValue {
+    return themeMode.name;
+  }
+
+  static AppThemeMode themeModeFromString(String? value) {
+    return AppThemeMode.values.firstWhere(
+      (mode) => mode.name == value,
+      orElse: () => AppThemeMode.system,
     );
   }
 }
