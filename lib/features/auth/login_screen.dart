@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'auth_controller.dart';
 import 'auth_provider.dart';
 import 'register_screen.dart';
+import 'widgets/google_sign_in_button.dart';
 
 const gapS = SizedBox(height: 8);
 const gapM = SizedBox(height: 16);
@@ -43,23 +44,7 @@ AuthController get _authController =>
       }
     }
   }
-  Future<void> _loginWithGoogle() async {
-    setState(() => _loading = true);
-    try {
-      await _authController.signInWithGoogle();
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString())),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() => _loading = false);
-      }
-    }
 
-}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,10 +79,7 @@ AuthController get _authController =>
                   
             gapS,
 
-            ElevatedButton(
-              onPressed: _loading ? null : _loginWithGoogle,
-              child: const Text("Sign in with Google"),
-            ),
+            const GoogleSignInButton(),
 
             gapL,
             const SizedBox(height: 8),
