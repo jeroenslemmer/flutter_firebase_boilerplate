@@ -42,21 +42,12 @@ class HomeScreen extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  "Welcome",
-                  style: TextStyle(fontSize: 20),
-                ),
+                const Text("Welcome"),
                 const SizedBox(height: 20),
-                Text(
-                  appUser?.email ?? "geen email",
-                ),
-                Text(
-                  appUser?.displayName ?? "geen naam",
-                ),
-                Text(
-                  appUser?.uid ?? "geen uid",
-                ),
-                const Spacer(),
+                Text(appUser?.email ?? "geen email"),
+                Text(appUser?.displayName ?? "geen naam"),
+                Text(appUser?.uid ?? "geen uid"),
+                const SizedBox(height: 20),
                 const DebugInfo(),
               ],
             ),
