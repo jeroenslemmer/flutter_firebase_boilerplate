@@ -15,3 +15,23 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Roadmap
+
+### Fase 1
+- [x] Firebase Authentication
+- [x] Firestore user profile
+- [x] Email/password login
+- [ ] Google Sign-In (web)
+- [ ] Google Sign-In (iOS)
+
+### Fase 2
+- [ ] Settings
+- [ ] Meertaligheid
+- [ ] Theme support
+- [ ] Offline caching
+
+### Fase 3
+- [ ] Push notifications
+- [ ] Crash reporting
+- [ ] Analytics
