@@ -31,10 +31,8 @@ class AuthService {
   }
 
   Future<void> signOut() async {
-    await _googleSignIn.signOut();
     await _auth.signOut();
   }
-
   Future<UserCredential> signInWithGoogle() async {
     // v7 flow: authentication (not classic signIn-only assumption)
   final googleUser = await _googleSignIn.authenticate();
