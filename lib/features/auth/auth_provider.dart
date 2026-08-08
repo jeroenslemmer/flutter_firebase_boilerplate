@@ -1,13 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/firebase/auth_service.dart';
 import 'auth_controller.dart';
-import '../../core/models/app_user.dart';  
+import '../../core/models/app_user.dart';
 import '../../core/router/router_refresh_notifier.dart';
 import '../../core/firebase/firestore_service.dart';
 
-
 final authServiceProvider = Provider<AuthService>((ref) {
   return AuthService();
+});
+
+final googleInitializationProvider = FutureProvider<void>((ref) {
+  return ref.watch(authServiceProvider).googleInitialization;
 });
 
 final authControllerProvider = Provider<AuthController>((ref) {
