@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/firebase/firebase_service.dart';
 import 'core/router/app_router.dart';
+import 'core/theme/app_theme.dart';
 
 import 'features/settings/device/device_settings.dart';
 import 'features/settings/device/device_settings_provider.dart';
@@ -19,21 +20,12 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
 
   final container = ProviderContainer(
-    overrides: [
-      sharedPreferencesProvider.overrideWithValue(prefs),
-    ],
+    overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
   );
 
-  await container
-      .read(deviceSettingsControllerProvider)
-      .loadSettings();
+  await container.read(deviceSettingsControllerProvider).loadSettings();
 
-  runApp(
-    UncontrolledProviderScope(
-      container: container,
-      child: const MyApp(),
-    ),
-  );
+  runApp(UncontrolledProviderScope(container: container, child: const MyApp()));
 }
 
 class MyApp extends ConsumerWidget {
@@ -46,8 +38,8 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
 
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
 
       themeMode: switch (settings.themeMode) {
         AppThemeMode.light => ThemeMode.light,

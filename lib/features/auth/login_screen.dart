@@ -4,24 +4,20 @@ import 'auth_controller.dart';
 import 'auth_provider.dart';
 import 'register_screen.dart';
 import 'widgets/google_sign_in_button.dart';
-
-const gapS = SizedBox(height: 8);
-const gapM = SizedBox(height: 16);
-const gapL = SizedBox(height: 24);
+import '../../core/theme/app_spacing.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
-@override
-ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  @override
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-AuthController get _authController =>
-    ref.read(authControllerProvider);
+  AuthController get _authController => ref.read(authControllerProvider);
 
   bool _loading = false;
 
@@ -34,9 +30,9 @@ AuthController get _authController =>
       );
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString())),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toString())));
       }
     } finally {
       if (mounted) {
@@ -49,18 +45,20 @@ AuthController get _authController =>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: AppSpacing.formPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Login", style: TextStyle(fontSize: 24)),
+            Text('Login', style: Theme.of(context).textTheme.headlineMedium),
 
-            gapL,
+            AppSpacing.gapLg,
 
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(labelText: "Email"),
             ),
+
+            AppSpacing.gapMd,
 
             TextField(
               controller: _passwordController,
@@ -68,7 +66,7 @@ AuthController get _authController =>
               decoration: const InputDecoration(labelText: "Password"),
             ),
 
-            gapL,
+            AppSpacing.gapLg,
 
             _loading
                 ? const CircularProgressIndicator()
@@ -76,21 +74,18 @@ AuthController get _authController =>
                     onPressed: _loading ? null : _login,
                     child: const Text("Login"),
                   ),
-                  
-            gapS,
+
+            AppSpacing.gapSm,
 
             const GoogleSignInButton(),
 
-            gapL,
-            const SizedBox(height: 8),
+            AppSpacing.gapLg,
 
             TextButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (_) => const RegisterScreen(),
-                  ),
+                  MaterialPageRoute(builder: (_) => const RegisterScreen()),
                 );
               },
               child: const Text('Create a new account'),
@@ -100,6 +95,7 @@ AuthController get _authController =>
       ),
     );
   }
+
   @override
   void dispose() {
     _emailController.dispose();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'auth_provider.dart';
+import '../../core/theme/app_spacing.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
@@ -28,9 +29,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   Future<void> _register() async {
     if (_passwordController.text != _confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Wachtwoorden komen niet overeen'),
-        ),
+        const SnackBar(content: Text('Wachtwoorden komen niet overeen')),
       );
       return;
     }
@@ -38,19 +37,18 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     setState(() => _loading = true);
 
     try {
-      await ref.read(authControllerProvider).signUp(
-            _emailController.text.trim(),
-            _passwordController.text,
-          );
+      await ref
+          .read(authControllerProvider)
+          .signUp(_emailController.text.trim(), _passwordController.text);
 
       if (mounted) {
         Navigator.pop(context);
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString())),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toString())));
       }
     }
 
@@ -62,39 +60,34 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Register'),
-      ),
+      appBar: AppBar(title: const Text('Register')),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: AppSpacing.formPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             TextField(
               controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-              ),
+              decoration: const InputDecoration(labelText: 'Email'),
             ),
+
+            AppSpacing.gapMd,
 
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-              ),
+              decoration: const InputDecoration(labelText: 'Password'),
             ),
+
+            AppSpacing.gapMd,
 
             TextField(
               controller: _confirmPasswordController,
               obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Confirm password',
-              ),
+              decoration: const InputDecoration(labelText: 'Confirm password'),
             ),
 
-            const SizedBox(height: 24),
+            AppSpacing.gapLg,
 
             _loading
                 ? const CircularProgressIndicator()
