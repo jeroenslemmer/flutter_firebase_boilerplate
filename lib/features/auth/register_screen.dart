@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'auth_provider.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../l10n/app_localizations.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
   const RegisterScreen({super.key});
@@ -29,7 +30,9 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   Future<void> _register() async {
     if (_passwordController.text != _confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Wachtwoorden komen niet overeen')),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.passwordsDoNotMatch),
+        ),
       );
       return;
     }
@@ -46,9 +49,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(e.toString())));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.errorWithDetails(e.toString()),
+            ),
+          ),
+        );
       }
     }
 
@@ -59,8 +66,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Register')),
+      appBar: AppBar(title: Text(l10n.register)),
       body: Padding(
         padding: AppSpacing.formPadding,
         child: Column(
@@ -68,7 +77,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           children: [
             TextField(
               controller: _emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(labelText: l10n.email),
             ),
 
             AppSpacing.gapMd,
@@ -76,7 +85,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: const InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(labelText: l10n.password),
             ),
 
             AppSpacing.gapMd,
@@ -84,7 +93,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             TextField(
               controller: _confirmPasswordController,
               obscureText: true,
-              decoration: const InputDecoration(labelText: 'Confirm password'),
+              decoration: InputDecoration(labelText: l10n.confirmPassword),
             ),
 
             AppSpacing.gapLg,
@@ -93,7 +102,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: _register,
-                    child: const Text('Create account'),
+                    child: Text(l10n.createAccount),
                   ),
           ],
         ),

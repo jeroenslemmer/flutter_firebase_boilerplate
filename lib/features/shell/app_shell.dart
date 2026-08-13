@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
 import '../settings/settings_screen.dart';
+import '../../l10n/app_localizations.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({super.key});
@@ -22,13 +23,15 @@ class _AppShellState extends State<AppShell> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: IndexedStack(index: _index, children: _pages),
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
             IconButton(
-              tooltip: 'Home',
+              tooltip: l10n.home,
               icon: Icon(
                 Icons.home,
                 color: _index == 0
@@ -39,7 +42,7 @@ class _AppShellState extends State<AppShell> {
             ),
             const Spacer(),
             PopupMenuButton<_MenuDestination>(
-              tooltip: 'Menu',
+              tooltip: l10n.menu,
               icon: const Icon(Icons.menu),
               onSelected: (destination) {
                 setState(() {
@@ -49,19 +52,19 @@ class _AppShellState extends State<AppShell> {
                   };
                 });
               },
-              itemBuilder: (context) => const [
+              itemBuilder: (context) => [
                 PopupMenuItem(
                   value: _MenuDestination.profile,
                   child: ListTile(
-                    leading: Icon(Icons.person),
-                    title: Text('Profiel'),
+                    leading: const Icon(Icons.person),
+                    title: Text(l10n.profile),
                   ),
                 ),
                 PopupMenuItem(
                   value: _MenuDestination.settings,
                   child: ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text('Settings'),
+                    leading: const Icon(Icons.settings),
+                    title: Text(l10n.settings),
                   ),
                 ),
               ],

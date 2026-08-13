@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Forceer HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Bestaande bestanden en mappen gewoon serveren
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Flutter Web: alle overige routes naar index.html
+RewriteRule ^ index.html [L]

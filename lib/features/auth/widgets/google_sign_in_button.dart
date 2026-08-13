@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'google_sign_in_web_button_stub.dart'
     if (dart.library.js_interop) 'google_sign_in_web_button.dart'
     as google_web_button;
+import '../../../l10n/app_localizations.dart';
 
 class GoogleSignInButton extends ConsumerStatefulWidget {
   const GoogleSignInButton({super.key});
@@ -23,9 +24,13 @@ class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
       await ref.read(authControllerProvider).signInWithGoogle();
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(e.toString())));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.errorWithDetails(e.toString()),
+            ),
+          ),
+        );
       }
     } finally {
       if (mounted) {
@@ -36,6 +41,8 @@ class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     if (kIsWeb) {
       final initialization = ref.watch(googleInitializationProvider);
 
@@ -45,7 +52,7 @@ class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
           child: Center(child: CircularProgressIndicator()),
         ),
         error: (error, stackTrace) => Text(
-          'Google Sign-In kon niet worden voorbereid: $error',
+          l10n.googleSignInUnavailable(error.toString()),
           textAlign: TextAlign.center,
         ),
         data: (_) => google_web_button.buildGoogleSignInWebButton(),
@@ -56,7 +63,7 @@ class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
         ? const CircularProgressIndicator()
         : ElevatedButton(
             onPressed: _loginWithGoogle,
-            child: const Text('Sign in with Google'),
+            child: Text(l10n.signInWithGoogle),
           );
   }
 }

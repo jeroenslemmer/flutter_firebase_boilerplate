@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/firebase/firebase_service.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'features/auth/user_profile_provider.dart';
+import 'l10n/app_localizations.dart';
 
 import 'features/settings/device/device_settings.dart';
 import 'features/settings/device/device_settings_provider.dart';
@@ -34,12 +36,17 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(deviceSettingsProvider);
+    final profile = ref.watch(userProfileProvider).valueOrNull;
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
 
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
+
+      locale: Locale(profile?.language == 'en' ? 'en' : 'nl'),
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
 
       themeMode: switch (settings.themeMode) {
         AppThemeMode.light => ThemeMode.light,

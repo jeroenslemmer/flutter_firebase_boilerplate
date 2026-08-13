@@ -5,22 +5,24 @@ import 'device/device_settings.dart';
 import 'device/device_settings_controller_provider.dart';
 import 'device/device_settings_provider.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../l10n/app_localizations.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final settings = ref.watch(deviceSettingsProvider);
     final controller = ref.read(deviceSettingsControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings')),
+      appBar: AppBar(title: Text(l10n.settings)),
 
       body: ListView(
         padding: AppSpacing.screenPadding,
         children: [
-          Text('Theme', style: Theme.of(context).textTheme.titleLarge),
+          Text(l10n.theme, style: Theme.of(context).textTheme.titleLarge),
 
           RadioGroup<AppThemeMode>(
             groupValue: settings.themeMode,
@@ -31,18 +33,18 @@ class SettingsScreen extends ConsumerWidget {
             },
             child: Column(
               children: [
-                const RadioListTile<AppThemeMode>(
-                  title: Text('System'),
+                RadioListTile<AppThemeMode>(
+                  title: Text(l10n.systemTheme),
                   value: AppThemeMode.system,
                 ),
 
-                const RadioListTile<AppThemeMode>(
-                  title: Text('Light'),
+                RadioListTile<AppThemeMode>(
+                  title: Text(l10n.lightTheme),
                   value: AppThemeMode.light,
                 ),
 
-                const RadioListTile<AppThemeMode>(
-                  title: Text('Dark'),
+                RadioListTile<AppThemeMode>(
+                  title: Text(l10n.darkTheme),
                   value: AppThemeMode.dark,
                 ),
               ],

@@ -5,6 +5,7 @@ import 'auth_provider.dart';
 import 'register_screen.dart';
 import 'widgets/google_sign_in_button.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../l10n/app_localizations.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -30,9 +31,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       );
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(e.toString())));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppLocalizations.of(context)!.errorWithDetails(e.toString()),
+            ),
+          ),
+        );
       }
     } finally {
       if (mounted) {
@@ -43,19 +48,21 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       body: Padding(
         padding: AppSpacing.formPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Login', style: Theme.of(context).textTheme.headlineMedium),
+            Text(l10n.login, style: Theme.of(context).textTheme.headlineMedium),
 
             AppSpacing.gapLg,
 
             TextField(
               controller: _emailController,
-              decoration: const InputDecoration(labelText: "Email"),
+              decoration: InputDecoration(labelText: l10n.email),
             ),
 
             AppSpacing.gapMd,
@@ -63,7 +70,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: const InputDecoration(labelText: "Password"),
+              decoration: InputDecoration(labelText: l10n.password),
             ),
 
             AppSpacing.gapLg,
@@ -72,7 +79,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: _loading ? null : _login,
-                    child: const Text("Login"),
+                    child: Text(l10n.login),
                   ),
 
             AppSpacing.gapSm,
@@ -88,7 +95,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   MaterialPageRoute(builder: (_) => const RegisterScreen()),
                 );
               },
-              child: const Text('Create a new account'),
+              child: Text(l10n.createNewAccount),
             ),
           ],
         ),

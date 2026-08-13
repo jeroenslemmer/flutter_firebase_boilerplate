@@ -22,9 +22,7 @@ class FirestoreService {
         'themeMode': 'system',
       });
     } else {
-      await ref.update({
-        'lastLogin': FieldValue.serverTimestamp(),
-      });
+      await ref.update({'lastLogin': FieldValue.serverTimestamp()});
     }
   }
 
@@ -34,10 +32,11 @@ class FirestoreService {
         return null;
       }
 
-      return UserProfile.fromFirestore(
-        uid,
-        snapshot.data()!,
-      );
+      return UserProfile.fromFirestore(uid, snapshot.data()!);
     });
+  }
+
+  Future<void> updateUserLanguage(String uid, String language) {
+    return users.doc(uid).update({'language': language});
   }
 }
