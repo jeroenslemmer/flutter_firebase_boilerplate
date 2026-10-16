@@ -35,3 +35,17 @@ samples, guidance on mobile development, and a full API reference.
 - [ ] Push notifications
 - [ ] Crash reporting
 - [ ] Analytics
+
+## Test
+- web app (local): flutter run -d chrome --web-hostname localhost --web-port 7357
+- Flutter: `flutter test`
+- Firestore Security Rules: `cd firebase-tests && npm install && npm test`
+
+Voor de Firestore-tests zijn Node.js 20+ en JDK 21+ nodig. De tests draaien
+uitsluitend tegen een lokale `demo-*` Firebase-emulator.
+
+Lees voor iedere app die van deze boilerplate wordt afgeleid eerst het
+[Firestore-protocol](docs/firestore-derived-app-protocol.md).
+
+## Release
+- web app (host): flutter build web --releasename: flutter_firebase_boilerplate

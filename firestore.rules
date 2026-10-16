@@ -1,0 +1,76 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function hasValidUserProfileShape(data) {
+      return data.keys().hasAll([
+          'createdAt',
+          'lastLogin',
+          'profileComplete',
+          'language',
+          'themeMode'
+        ])
+        && data.keys().hasOnly([
+          'createdAt',
+          'lastLogin',
+          'profileComplete',
+          'language',
+          'themeMode'
+        ]);
+    }
+
+    function hasValidUserProfileValues(data) {
+      return data.createdAt is timestamp
+        && data.lastLogin is timestamp
+        && data.profileComplete is bool
+        && data.language is string
+        && data.language in ['nl', 'en']
+        && data.themeMode is string
+        && data.themeMode in ['system', 'light', 'dark'];
+    }
+
+    function isValidNewUserProfile() {
+      return hasValidUserProfileShape(request.resource.data)
+        && hasValidUserProfileValues(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.lastLogin == request.time;
+    }
+
+    function isValidUserProfileUpdate() {
+      let changedFields = request.resource.data.diff(resource.data).affectedKeys();
+
+      return hasValidUserProfileShape(request.resource.data)
+        && hasValidUserProfileValues(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && changedFields.hasOnly([
+          'lastLogin',
+          'profileComplete',
+          'language',
+          'themeMode'
+        ])
+        && (!changedFields.hasAny(['lastLogin'])
+          || request.resource.data.lastLogin == request.time);
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if isOwner(userId) && isValidNewUserProfile();
+      allow update: if isOwner(userId) && isValidUserProfileUpdate();
+      allow delete: if isOwner(userId);
+    }
+
+    // Every collection not explicitly declared above remains inaccessible.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
