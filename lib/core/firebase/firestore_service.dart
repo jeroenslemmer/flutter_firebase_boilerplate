@@ -39,4 +39,8 @@ class FirestoreService {
   Future<void> updateUserLanguage(String uid, String language) {
     return users.doc(uid).update({'language': language});
   }
+
+  Future<void> deleteUserProfile(String uid) {
+    return users.doc(uid).delete();
+  }
 }

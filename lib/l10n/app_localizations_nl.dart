@@ -155,4 +155,126 @@ class AppLocalizationsNl extends AppLocalizations {
   String platformValue(String value) {
     return 'Platform: $value';
   }
+
+  @override
+  String get forgotPassword => 'Wachtwoord vergeten?';
+
+  @override
+  String get resetPassword => 'Wachtwoord herstellen';
+
+  @override
+  String get passwordResetInstructions =>
+      'Vul je e-mailadres in. Als er een account bestaat, ontvang je een link om je wachtwoord opnieuw in te stellen.';
+
+  @override
+  String get sendResetEmail => 'Herstellink versturen';
+
+  @override
+  String get passwordResetEmailSent =>
+      'Als er een account voor dit e-mailadres bestaat, is een herstellink verzonden.';
+
+  @override
+  String get backToLogin => 'Terug naar inloggen';
+
+  @override
+  String get enterValidEmail => 'Vul een geldig e-mailadres in.';
+
+  @override
+  String get enterPassword => 'Vul je wachtwoord in.';
+
+  @override
+  String get passwordMinimumLength => 'Gebruik minimaal 6 tekens.';
+
+  @override
+  String get enterPasswordConfirmation => 'Herhaal je wachtwoord.';
+
+  @override
+  String get verifyEmail => 'Bevestig je e-mailadres';
+
+  @override
+  String verificationEmailInstructions(String email) {
+    return 'We hebben een bevestigingslink gestuurd naar $email. Open de link en kom daarna terug naar de app.';
+  }
+
+  @override
+  String get iHaveVerifiedEmail => 'Ik heb mijn e-mail bevestigd';
+
+  @override
+  String get resendVerificationEmail => 'Bevestigingsmail opnieuw versturen';
+
+  @override
+  String get verificationEmailResent =>
+      'De bevestigingsmail is opnieuw verstuurd.';
+
+  @override
+  String get emailNotVerifiedYet => 'Je e-mailadres is nog niet bevestigd.';
+
+  @override
+  String get signInWithApple => 'Inloggen met Apple';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get deleteAccount => 'Account verwijderen';
+
+  @override
+  String get deleteAccountWarning =>
+      'Je account en profiel worden permanent verwijderd. Deze actie kan niet ongedaan worden gemaakt.';
+
+  @override
+  String get currentPassword => 'Huidig wachtwoord';
+
+  @override
+  String get cancel => 'Annuleren';
+
+  @override
+  String get deletePermanently => 'Permanent verwijderen';
+
+  @override
+  String get authErrorInvalidEmail => 'Het e-mailadres is ongeldig.';
+
+  @override
+  String get authErrorInvalidCredential =>
+      'Het e-mailadres of wachtwoord is onjuist.';
+
+  @override
+  String get authErrorEmailAlreadyInUse =>
+      'Er bestaat al een account met dit e-mailadres.';
+
+  @override
+  String get authErrorWeakPassword => 'Kies een sterker wachtwoord.';
+
+  @override
+  String get authErrorUserDisabled => 'Dit account is uitgeschakeld.';
+
+  @override
+  String get authErrorTooManyRequests =>
+      'Te veel pogingen. Probeer het later opnieuw.';
+
+  @override
+  String get authErrorNetwork =>
+      'Controleer je internetverbinding en probeer het opnieuw.';
+
+  @override
+  String get authErrorOperationNotAllowed =>
+      'Deze inlogmethode is nog niet beschikbaar.';
+
+  @override
+  String get authErrorRequiresRecentLogin =>
+      'Log opnieuw in om deze gevoelige actie uit te voeren.';
+
+  @override
+  String get authErrorPasswordRequired => 'Vul je huidige wachtwoord in.';
+
+  @override
+  String get authErrorUnsupportedProvider =>
+      'Dit account gebruikt een niet-ondersteunde inlogmethode.';
+
+  @override
+  String get authErrorCancelled => 'Het inloggen is geannuleerd.';
+
+  @override
+  String get authErrorUnknown =>
+      'Authenticatie is mislukt. Probeer het opnieuw.';
 }

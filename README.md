@@ -19,11 +19,12 @@ samples, guidance on mobile development, and a full API reference.
 ## Roadmap
 
 ### Fase 1
-- [x] Firebase Authentication
+- [x] Firebase Authentication met verificatie, herstel en accountverwijdering
 - [x] Firestore user profile
 - [x] Email/password login
-- [ ] Google Sign-In (web)
-- [ ] Google Sign-In (iOS)
+- [x] Google Sign-In (web)
+- [x] Google Sign-In (iOS)
+- [x] Apple Sign-In (iOS/macOS; configuratie per afgeleide app vereist)
 
 ### Fase 2
 - [ ] Settings
@@ -46,6 +47,10 @@ uitsluitend tegen een lokale `demo-*` Firebase-emulator.
 
 Lees voor iedere app die van deze boilerplate wordt afgeleid eerst het
 [Firestore-protocol](docs/firestore-derived-app-protocol.md).
+
+Volg daarnaast de
+[authenticatie-instructies](docs/authentication-setup.md) voor de Firebase-,
+Google- en Apple-configuratie van iedere afgeleide app.
 
 Vertalingen worden via aparte Git-branches aangeleverd. Zie de
 [Git-workflow voor vertalingen](docs/translation-workflow.md). Controleer een

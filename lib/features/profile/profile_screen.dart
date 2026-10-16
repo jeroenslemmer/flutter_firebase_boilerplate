@@ -5,6 +5,7 @@ import '../auth/auth_provider.dart';
 import '../auth/user_profile_provider.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../l10n/app_localizations.dart';
+import '../auth/auth_error_message.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
@@ -15,6 +16,7 @@ class ProfileScreen extends ConsumerStatefulWidget {
 
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _isSavingLanguage = false;
+  bool _isDeletingAccount = false;
 
   Future<void> _setLanguage(String uid, String language) async {
     setState(() => _isSavingLanguage = true);
@@ -34,6 +36,74 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     } finally {
       if (mounted) {
         setState(() => _isSavingLanguage = false);
+      }
+    }
+  }
+
+  Future<void> _deleteAccount() async {
+    final l10n = AppLocalizations.of(context)!;
+    final appUser = ref.read(authStateProvider).valueOrNull;
+    if (appUser == null) {
+      return;
+    }
+
+    String? password;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: Text(l10n.deleteAccount),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.deleteAccountWarning),
+              if (appUser.usesPassword) ...[
+                AppSpacing.gapMd,
+                TextField(
+                  obscureText: true,
+                  autofocus: true,
+                  onChanged: (value) => password = value,
+                  decoration: InputDecoration(labelText: l10n.currentPassword),
+                ),
+              ],
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext, false),
+              child: Text(l10n.cancel),
+            ),
+            FilledButton(
+              onPressed: () {
+                Navigator.pop(dialogContext, true);
+              },
+              style: FilledButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.error,
+              ),
+              child: Text(l10n.deletePermanently),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirmed != true || !mounted) {
+      return;
+    }
+
+    setState(() => _isDeletingAccount = true);
+    try {
+      await ref.read(authControllerProvider).deleteAccount(password: password);
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(authErrorMessage(error, l10n))));
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isDeletingAccount = false);
       }
     }
   }
@@ -97,6 +167,24 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               Text(
                 l10n.lastLoginValue(
                   profile.lastLogin?.toString() ?? l10n.notAvailable,
+                ),
+              ),
+              AppSpacing.gapLg,
+              const Divider(),
+              AppSpacing.gapMd,
+              Text(l10n.account, style: Theme.of(context).textTheme.titleLarge),
+              AppSpacing.gapMd,
+              FilledButton.tonalIcon(
+                onPressed: _isDeletingAccount ? null : _deleteAccount,
+                icon: _isDeletingAccount
+                    ? const SizedBox.square(
+                        dimension: 18,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.delete_forever_outlined),
+                label: Text(l10n.deleteAccount),
+                style: FilledButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.error,
                 ),
               ),
             ],

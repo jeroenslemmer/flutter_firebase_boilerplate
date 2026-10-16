@@ -155,4 +155,125 @@ class AppLocalizationsEn extends AppLocalizations {
   String platformValue(String value) {
     return 'Platform: $value';
   }
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get resetPassword => 'Reset password';
+
+  @override
+  String get passwordResetInstructions =>
+      'Enter your email address. If an account exists, you will receive a link to reset your password.';
+
+  @override
+  String get sendResetEmail => 'Send reset link';
+
+  @override
+  String get passwordResetEmailSent =>
+      'If an account exists for this email address, a reset link has been sent.';
+
+  @override
+  String get backToLogin => 'Back to login';
+
+  @override
+  String get enterValidEmail => 'Enter a valid email address.';
+
+  @override
+  String get enterPassword => 'Enter your password.';
+
+  @override
+  String get passwordMinimumLength => 'Use at least 6 characters.';
+
+  @override
+  String get enterPasswordConfirmation => 'Repeat your password.';
+
+  @override
+  String get verifyEmail => 'Verify your email address';
+
+  @override
+  String verificationEmailInstructions(String email) {
+    return 'We sent a verification link to $email. Open the link and then return to the app.';
+  }
+
+  @override
+  String get iHaveVerifiedEmail => 'I have verified my email';
+
+  @override
+  String get resendVerificationEmail => 'Resend verification email';
+
+  @override
+  String get verificationEmailResent =>
+      'The verification email has been sent again.';
+
+  @override
+  String get emailNotVerifiedYet =>
+      'Your email address has not been verified yet.';
+
+  @override
+  String get signInWithApple => 'Sign in with Apple';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get deleteAccount => 'Delete account';
+
+  @override
+  String get deleteAccountWarning =>
+      'Your account and profile will be permanently deleted. This action cannot be undone.';
+
+  @override
+  String get currentPassword => 'Current password';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get deletePermanently => 'Delete permanently';
+
+  @override
+  String get authErrorInvalidEmail => 'The email address is invalid.';
+
+  @override
+  String get authErrorInvalidCredential =>
+      'The email address or password is incorrect.';
+
+  @override
+  String get authErrorEmailAlreadyInUse =>
+      'An account already exists for this email address.';
+
+  @override
+  String get authErrorWeakPassword => 'Choose a stronger password.';
+
+  @override
+  String get authErrorUserDisabled => 'This account has been disabled.';
+
+  @override
+  String get authErrorTooManyRequests => 'Too many attempts. Try again later.';
+
+  @override
+  String get authErrorNetwork =>
+      'Check your internet connection and try again.';
+
+  @override
+  String get authErrorOperationNotAllowed =>
+      'This sign-in method is not available yet.';
+
+  @override
+  String get authErrorRequiresRecentLogin =>
+      'Sign in again to perform this sensitive action.';
+
+  @override
+  String get authErrorPasswordRequired => 'Enter your current password.';
+
+  @override
+  String get authErrorUnsupportedProvider =>
+      'This account uses an unsupported sign-in method.';
+
+  @override
+  String get authErrorCancelled => 'Sign-in was cancelled.';
+
+  @override
+  String get authErrorUnknown => 'Authentication failed. Try again.';
 }

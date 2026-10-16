@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'auth_provider.dart';
+import 'auth_error_message.dart';
 import '../../core/theme/app_spacing.dart';
 import '../../l10n/app_localizations.dart';
 
@@ -16,6 +17,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   bool _loading = false;
 
@@ -28,6 +30,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   }
 
   Future<void> _register() async {
+    final l10n = AppLocalizations.of(context)!;
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+
     if (_passwordController.text != _confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -42,20 +49,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     try {
       await ref
           .read(authControllerProvider)
-          .signUp(_emailController.text.trim(), _passwordController.text);
-
+          .signUp(
+            _emailController.text.trim(),
+            _passwordController.text,
+            languageCode: Localizations.localeOf(context).languageCode,
+          );
+    } catch (error) {
       if (mounted) {
-        Navigator.pop(context);
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              AppLocalizations.of(context)!.errorWithDetails(e.toString()),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(authErrorMessage(error, l10n))));
       }
     }
 
@@ -70,41 +73,74 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.register)),
-      body: Padding(
-        padding: AppSpacing.formPadding,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: l10n.email),
-            ),
-
-            AppSpacing.gapMd,
-
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(labelText: l10n.password),
-            ),
-
-            AppSpacing.gapMd,
-
-            TextField(
-              controller: _confirmPasswordController,
-              obscureText: true,
-              decoration: InputDecoration(labelText: l10n.confirmPassword),
-            ),
-
-            AppSpacing.gapLg,
-
-            _loading
-                ? const CircularProgressIndicator()
-                : ElevatedButton(
-                    onPressed: _register,
-                    child: Text(l10n.createAccount),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: AppSpacing.formPadding,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 480),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextFormField(
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    autofillHints: const [
+                      AutofillHints.newUsername,
+                      AutofillHints.email,
+                    ],
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(labelText: l10n.email),
+                    validator: (value) =>
+                        value == null ||
+                            value.trim().isEmpty ||
+                            !value.contains('@')
+                        ? l10n.enterValidEmail
+                        : null,
                   ),
-          ],
+
+                  AppSpacing.gapMd,
+
+                  TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    autofillHints: const [AutofillHints.newPassword],
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(labelText: l10n.password),
+                    validator: (value) => value == null || value.length < 6
+                        ? l10n.passwordMinimumLength
+                        : null,
+                  ),
+
+                  AppSpacing.gapMd,
+
+                  TextFormField(
+                    controller: _confirmPasswordController,
+                    obscureText: true,
+                    autofillHints: const [AutofillHints.newPassword],
+                    textInputAction: TextInputAction.done,
+                    decoration: InputDecoration(
+                      labelText: l10n.confirmPassword,
+                    ),
+                    validator: (value) => value == null || value.isEmpty
+                        ? l10n.enterPasswordConfirmation
+                        : null,
+                    onFieldSubmitted: (_) => _loading ? null : _register(),
+                  ),
+
+                  AppSpacing.gapLg,
+
+                  _loading
+                      ? const CircularProgressIndicator()
+                      : ElevatedButton(
+                          onPressed: _register,
+                          child: Text(l10n.createAccount),
+                        ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

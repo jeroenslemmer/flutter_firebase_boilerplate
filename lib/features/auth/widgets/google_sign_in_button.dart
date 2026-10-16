@@ -6,6 +6,7 @@ import 'google_sign_in_web_button_stub.dart'
     if (dart.library.js_interop) 'google_sign_in_web_button.dart'
     as google_web_button;
 import '../../../l10n/app_localizations.dart';
+import '../auth_error_message.dart';
 
 class GoogleSignInButton extends ConsumerStatefulWidget {
   const GoogleSignInButton({super.key});
@@ -18,19 +19,16 @@ class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
   bool _loading = false;
 
   Future<void> _loginWithGoogle() async {
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _loading = true);
 
     try {
       await ref.read(authControllerProvider).signInWithGoogle();
-    } catch (e) {
+    } catch (error) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              AppLocalizations.of(context)!.errorWithDetails(e.toString()),
-            ),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(authErrorMessage(error, l10n))));
       }
     } finally {
       if (mounted) {
