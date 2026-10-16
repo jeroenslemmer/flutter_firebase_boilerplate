@@ -21,7 +21,28 @@ aangeleverd. Er is geen vertaalplatform of hostingabonnement nodig.
 - werkt altijd in een eigen branch;
 - levert het resultaat aan via een pull- of merge request.
 
-## Een vertaling uitvoeren via een Git-webinterface
+## Een vertaling uitvoeren
+
+### Aanbevolen: lokale editor vanuit VS Code
+
+De vertaler hoeft het ARB-bestand niet rechtstreeks te bewerken:
+
+1. Open het project in Visual Studio Code.
+2. Kies **Terminal → Run Task**.
+3. Kies **Translations: Edit English** of **Translations: Edit language…**.
+4. De lokale vertaaleditor opent automatisch in de browser.
+5. Selecteer links een tekst en wijzig alleen het veld **Vertaling**.
+6. Los eventuele placeholderwaarschuwingen op.
+7. Kies **Wijzigingen opslaan**.
+8. Stop de VS Code-taak met de prullenbakknop in de terminal.
+9. Controleer de wijzigingen in Source Control en maak een commit.
+
+De editor draait alleen op `127.0.0.1`, gebruikt geen database of externe
+hosting en schrijft rechtstreeks naar het gekozen `app_<taal>.arb`-bestand.
+Bronteksten, sleutels en metadata zijn alleen-lezen. De server valideert alle
+sleutels en placeholders opnieuw voordat het bestand wordt opgeslagen.
+
+### Alternatief: rechtstreeks via de Git-webinterface
 
 De exacte knoppen verschillen tussen GitHub, GitLab en andere Git-providers,
 maar de stappen zijn hetzelfde:

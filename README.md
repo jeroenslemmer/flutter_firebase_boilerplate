@@ -51,5 +51,8 @@ Vertalingen worden via aparte Git-branches aangeleverd. Zie de
 [Git-workflow voor vertalingen](docs/translation-workflow.md). Controleer een
 wijziging met `dart run tool/check_translations.dart`.
 
+Start de lokale vertaaleditor in VS Code via **Terminal → Run Task →
+Translations: Edit English**.
+
 ## Release
 - web app (host): flutter build web --releasename: flutter_firebase_boilerplate

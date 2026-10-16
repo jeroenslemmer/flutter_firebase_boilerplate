@@ -1,0 +1,86 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Translations: Edit English",
+      "type": "shell",
+      "command": "dart",
+      "args": [
+        "run",
+        "tool/translation_editor.dart",
+        "--locale",
+        "en"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "translation-editor",
+        "pattern": {
+          "regexp": "^(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Starting translation editor",
+          "endsPattern": "^Translation editor ready"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Translations: Edit language…",
+      "type": "shell",
+      "command": "dart",
+      "args": [
+        "run",
+        "tool/translation_editor.dart",
+        "--locale",
+        "${input:translationLocale}"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "translation-editor",
+        "pattern": {
+          "regexp": "^(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^Starting translation editor",
+          "endsPattern": "^Translation editor ready"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Translations: Validate",
+      "type": "shell",
+      "command": "dart",
+      "args": [
+        "run",
+        "tool/check_translations.dart"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "translationLocale",
+      "type": "promptString",
+      "description": "Welke locale wil je bewerken? Bijvoorbeeld en, de of en_GB",
+      "default": "en"
+    }
+  ]
+}

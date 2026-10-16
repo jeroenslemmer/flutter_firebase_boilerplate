@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vertaaleditor</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f3f5f1;
+        --surface: #ffffff;
+        --surface-muted: #f7f8f5;
+        --text: #17201b;
+        --muted: #657168;
+        --border: #dce2dc;
+        --accent: #176b4d;
+        --accent-dark: #0f5139;
+        --accent-soft: #e4f2eb;
+        --warning: #9a5b00;
+        --danger: #a52a2a;
+        --shadow: 0 16px 40px rgba(25, 47, 35, 0.09);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      button, input, textarea { font: inherit; }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 22px 32px;
+        color: #fff;
+        background: #153f30;
+      }
+
+      .brand { display: flex; align-items: center; gap: 14px; }
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: #daf1e4;
+        color: var(--accent-dark);
+        font-weight: 800;
+      }
+      h1 { margin: 0; font-size: 20px; letter-spacing: -0.02em; }
+      .subtitle { margin-top: 3px; color: #c2d7cc; font-size: 13px; }
+
+      .save-button {
+        border: 0;
+        border-radius: 10px;
+        padding: 11px 18px;
+        background: #e5f5eb;
+        color: #103d2c;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .save-button:hover { background: #fff; }
+      .save-button:disabled { cursor: not-allowed; opacity: .55; }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+        min-height: calc(100vh - 86px);
+      }
+
+      aside {
+        padding: 24px 18px;
+        border-right: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      .search {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 11px 12px;
+        outline: none;
+      }
+      .search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+      .summary {
+        display: flex;
+        justify-content: space-between;
+        margin: 14px 2px 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .message-list {
+        display: grid;
+        gap: 6px;
+        max-height: calc(100vh - 190px);
+        overflow: auto;
+      }
+
+      .message-item {
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 11px 12px;
+        text-align: left;
+        background: transparent;
+        cursor: pointer;
+      }
+      .message-item:hover { background: var(--surface-muted); }
+      .message-item.active { border-color: #b7d7c6; background: var(--accent-soft); }
+      .message-key { display: block; font-weight: 700; font-size: 13px; }
+      .message-preview {
+        display: block;
+        margin-top: 3px;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      main { padding: 38px clamp(24px, 5vw, 72px); }
+      .editor-card {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: clamp(24px, 4vw, 44px);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .key-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .key-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+      .key-value { margin-top: 5px; font: 700 18px ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .status { color: var(--accent); font-size: 13px; font-weight: 700; }
+
+      .section { margin-top: 30px; }
+      .section-title { margin-bottom: 9px; color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+      .source-text { margin: 0; padding: 16px; border-radius: 11px; background: var(--surface-muted); font-size: 17px; line-height: 1.55; }
+      .description { margin: 10px 0 0; color: var(--muted); line-height: 1.55; }
+
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .chip { padding: 6px 9px; border-radius: 999px; background: #eef0ec; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+      textarea {
+        width: 100%;
+        min-height: 140px;
+        resize: vertical;
+        border: 1px solid #b9c5bc;
+        border-radius: 11px;
+        padding: 15px;
+        color: var(--text);
+        outline: none;
+        line-height: 1.55;
+      }
+      textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+      textarea.invalid { border-color: var(--danger); box-shadow: 0 0 0 3px #f8e5e5; }
+
+      .field-message { min-height: 22px; margin-top: 8px; color: var(--accent); font-size: 13px; }
+      .field-message.error { color: var(--danger); }
+      .toast {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        max-width: 420px;
+        padding: 13px 16px;
+        border-radius: 10px;
+        background: #153f30;
+        color: white;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: .2s ease;
+      }
+      .toast.visible { opacity: 1; transform: translateY(0); }
+      .toast.error { background: var(--danger); }
+
+      .empty { padding: 32px 12px; color: var(--muted); text-align: center; }
+
+      @media (max-width: 760px) {
+        .app-header { padding: 18px; }
+        .layout { grid-template-columns: 1fr; }
+        aside { border-right: 0; border-bottom: 1px solid var(--border); }
+        .message-list { max-height: 230px; }
+        main { padding: 20px 14px; }
+        .editor-card { padding: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">Aa</div>
+        <div>
+          <h1>Vertaaleditor</h1>
+          <div class="subtitle" id="subtitle">Catalogus laden…</div>
+        </div>
+      </div>
+      <button class="save-button" id="save" disabled>Wijzigingen opslaan</button>
+    </header>
+
+    <div class="layout">
+      <aside>
+        <input class="search" id="search" type="search" placeholder="Zoek tekst of sleutel…" aria-label="Zoek vertalingen">
+        <div class="summary"><span id="count">0 teksten</span><span id="changed">Geen wijzigingen</span></div>
+        <nav class="message-list" id="message-list" aria-label="Vertaalteksten"></nav>
+      </aside>
+
+      <main>
+        <section class="editor-card" id="editor" hidden>
+          <div class="key-row">
+            <div>
+              <div class="key-label">Sleutel</div>
+              <div class="key-value" id="key"></div>
+            </div>
+            <div class="status" id="status">Compleet</div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">Nederlandse brontekst</div>
+            <p class="source-text" id="source"></p>
+            <p class="description" id="description"></p>
+          </div>
+
+          <div class="section" id="placeholder-section" hidden>
+            <div class="section-title">Verplichte placeholders</div>
+            <div class="chips" id="placeholders"></div>
+          </div>
+
+          <div class="section">
+            <label class="section-title" id="translation-label" for="translation">Vertaling</label>
+            <textarea id="translation" spellcheck="true"></textarea>
+            <div class="field-message" id="field-message"></div>
+          </div>
+        </section>
+        <div class="empty" id="empty">Selecteer een vertaaltekst.</div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const state = { catalog: null, selectedKey: null, changed: new Set() };
+      const elements = {
+        subtitle: document.querySelector('#subtitle'),
+        save: document.querySelector('#save'),
+        search: document.querySelector('#search'),
+        count: document.querySelector('#count'),
+        changed: document.querySelector('#changed'),
+        list: document.querySelector('#message-list'),
+        editor: document.querySelector('#editor'),
+        empty: document.querySelector('#empty'),
+        key: document.querySelector('#key'),
+        status: document.querySelector('#status'),
+        source: document.querySelector('#source'),
+        description: document.querySelector('#description'),
+        placeholderSection: document.querySelector('#placeholder-section'),
+        placeholders: document.querySelector('#placeholders'),
+        translationLabel: document.querySelector('#translation-label'),
+        translation: document.querySelector('#translation'),
+        fieldMessage: document.querySelector('#field-message'),
+        toast: document.querySelector('#toast'),
+      };
+
+      function selectedMessage() {
+        return state.catalog?.messages.find(message => message.key === state.selectedKey);
+      }
+
+      function placeholders(value) {
+        return [...value.matchAll(/\{([A-Za-z_][A-Za-z0-9_]*)\s*(?:[,}])/g)].map(match => match[1]);
+      }
+
+      function validate(message) {
+        const value = message.translation.trim();
+        if (!value) return 'Vertaling mag niet leeg zijn.';
+        const expected = [...message.placeholders].sort();
+        const actual = [...new Set(placeholders(message.translation))].sort();
+        if (JSON.stringify(expected) !== JSON.stringify(actual)) {
+          return `Placeholders moeten gelijk blijven: ${expected.map(value => `{${value}}`).join(', ')}`;
+        }
+        return null;
+      }
+
+      function renderList() {
+        const query = elements.search.value.trim().toLowerCase();
+        const visible = state.catalog.messages.filter(message =>
+          message.key.toLowerCase().includes(query) ||
+          message.source.toLowerCase().includes(query) ||
+          message.translation.toLowerCase().includes(query)
+        );
+        elements.list.replaceChildren();
+        for (const message of visible) {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = `message-item${message.key === state.selectedKey ? ' active' : ''}`;
+          const key = document.createElement('span');
+          key.className = 'message-key';
+          key.textContent = message.key;
+          const preview = document.createElement('span');
+          preview.className = 'message-preview';
+          preview.textContent = message.translation || 'Nog niet vertaald';
+          button.append(key, preview);
+          button.addEventListener('click', () => select(message.key));
+          elements.list.append(button);
+        }
+        elements.count.textContent = `${visible.length} van ${state.catalog.messages.length} teksten`;
+      }
+
+      function select(key) {
+        state.selectedKey = key;
+        const message = selectedMessage();
+        elements.empty.hidden = true;
+        elements.editor.hidden = false;
+        elements.key.textContent = message.key;
+        elements.source.textContent = message.source;
+        elements.description.textContent = message.description || 'Geen aanvullende context.';
+        elements.translationLabel.textContent = `Vertaling (${state.catalog.targetLocale})`;
+        elements.translation.value = message.translation;
+        elements.placeholders.replaceChildren();
+        elements.placeholderSection.hidden = message.placeholders.length === 0;
+        for (const value of message.placeholders) {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = `{${value}}`;
+          elements.placeholders.append(chip);
+        }
+        renderValidation();
+        renderList();
+        elements.translation.focus();
+      }
+
+      function renderValidation() {
+        const message = selectedMessage();
+        if (!message) return;
+        const error = validate(message);
+        elements.translation.classList.toggle('invalid', Boolean(error));
+        elements.fieldMessage.classList.toggle('error', Boolean(error));
+        elements.fieldMessage.textContent = error || '✓ Vertaling en placeholders zijn geldig.';
+        elements.status.textContent = error ? 'Controle nodig' : 'Compleet';
+      }
+
+      function updateChangedState() {
+        const count = state.changed.size;
+        elements.changed.textContent = count === 0 ? 'Geen wijzigingen' : `${count} gewijzigd`;
+        elements.save.disabled = count === 0;
+      }
+
+      function showToast(message, isError = false) {
+        elements.toast.textContent = message;
+        elements.toast.classList.toggle('error', isError);
+        elements.toast.classList.add('visible');
+        window.setTimeout(() => elements.toast.classList.remove('visible'), 3200);
+      }
+
+      elements.translation.addEventListener('input', event => {
+        const message = selectedMessage();
+        message.translation = event.target.value;
+        state.changed.add(message.key);
+        updateChangedState();
+        renderValidation();
+      });
+
+      elements.search.addEventListener('input', renderList);
+
+      elements.save.addEventListener('click', async () => {
+        const firstInvalid = state.catalog.messages.find(validate);
+        if (firstInvalid) {
+          select(firstInvalid.key);
+          showToast(`Controleer eerst: ${firstInvalid.key}`, true);
+          return;
+        }
+
+        elements.save.disabled = true;
+        try {
+          const response = await fetch('/api/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              translations: Object.fromEntries(
+                state.catalog.messages.map(message => [message.key, message.translation])
+              )
+            }),
+          });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.error || 'Opslaan is mislukt.');
+          state.changed.clear();
+          updateChangedState();
+          renderList();
+          showToast(`${result.savedCount} vertalingen opgeslagen in ${result.targetFile}.`);
+        } catch (error) {
+          elements.save.disabled = false;
+          showToast(error.message, true);
+        }
+      });
+
+      window.addEventListener('beforeunload', event => {
+        if (state.changed.size > 0) {
+          event.preventDefault();
+          event.returnValue = '';
+        }
+      });
+
+      async function initialize() {
+        try {
+          const response = await fetch('/api/catalog');
+          const catalog = await response.json();
+          if (!response.ok) throw new Error(catalog.error || 'Catalogus laden is mislukt.');
+          state.catalog = catalog;
+          elements.subtitle.textContent = `${catalog.sourceLocale.toUpperCase()} → ${catalog.targetLocale.toUpperCase()} · ${catalog.targetFile}`;
+          renderList();
+          if (catalog.messages.length > 0) select(catalog.messages[0].key);
+        } catch (error) {
+          elements.subtitle.textContent = 'Editor kon niet starten';
+          elements.empty.textContent = error.message;
+          showToast(error.message, true);
+        }
+      }
+
+      initialize();
+    </script>
+  </body>
+</html>
