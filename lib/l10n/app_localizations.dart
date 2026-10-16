@@ -98,253 +98,253 @@ abstract class AppLocalizations {
     Locale('nl'),
   ];
 
-  /// No description provided for @login.
+  /// Primaire knop waarmee de gebruiker inlogt.
   ///
   /// In nl, this message translates to:
   /// **'Inloggen'**
   String get login;
 
-  /// No description provided for @email.
+  /// Label voor het veld waarin de gebruiker het e-mailadres invoert.
   ///
   /// In nl, this message translates to:
   /// **'E-mail'**
   String get email;
 
-  /// No description provided for @password.
+  /// Label voor het wachtwoordveld.
   ///
   /// In nl, this message translates to:
   /// **'Wachtwoord'**
   String get password;
 
-  /// No description provided for @createNewAccount.
+  /// Actie waarmee een gebruiker naar registratie gaat.
   ///
   /// In nl, this message translates to:
   /// **'Nieuw account maken'**
   String get createNewAccount;
 
-  /// No description provided for @signInWithGoogle.
+  /// Knoptekst voor aanmelden met een Google-account.
   ///
   /// In nl, this message translates to:
   /// **'Inloggen met Google'**
   String get signInWithGoogle;
 
-  /// No description provided for @googleSignInPreparing.
+  /// Tijdelijke status terwijl Google Sign-In wordt voorbereid.
   ///
   /// In nl, this message translates to:
   /// **'Inloggen met Google voorbereiden…'**
   String get googleSignInPreparing;
 
-  /// No description provided for @googleSignInUnavailable.
+  /// Foutmelding wanneer Google Sign-In niet gestart kan worden. Laat {error} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Inloggen met Google is niet beschikbaar: {error}'**
   String googleSignInUnavailable(String error);
 
-  /// No description provided for @register.
+  /// Titel of actie voor het registratiescherm.
   ///
   /// In nl, this message translates to:
   /// **'Registreren'**
   String get register;
 
-  /// No description provided for @confirmPassword.
+  /// Label voor het veld waarin het wachtwoord wordt herhaald.
   ///
   /// In nl, this message translates to:
   /// **'Bevestig wachtwoord'**
   String get confirmPassword;
 
-  /// No description provided for @createAccount.
+  /// Primaire knop waarmee een nieuw account wordt aangemaakt.
   ///
   /// In nl, this message translates to:
   /// **'Account maken'**
   String get createAccount;
 
-  /// No description provided for @passwordsDoNotMatch.
+  /// Validatiefout wanneer de twee ingevoerde wachtwoorden verschillen.
   ///
   /// In nl, this message translates to:
   /// **'Wachtwoorden komen niet overeen.'**
   String get passwordsDoNotMatch;
 
-  /// No description provided for @errorWithDetails.
+  /// Algemene foutmelding met technische details. Laat {error} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Er is iets misgegaan: {error}'**
   String errorWithDetails(String error);
 
-  /// No description provided for @home.
+  /// Naam van de hoofdpagina in de navigatie.
   ///
   /// In nl, this message translates to:
   /// **'Home'**
   String get home;
 
-  /// No description provided for @welcome.
+  /// Begroeting op de hoofdpagina.
   ///
   /// In nl, this message translates to:
   /// **'Welkom'**
   String get welcome;
 
-  /// No description provided for @noEmail.
+  /// Vervangende tekst wanneer geen e-mailadres bekend is.
   ///
   /// In nl, this message translates to:
   /// **'Geen e-mailadres'**
   String get noEmail;
 
-  /// No description provided for @noName.
+  /// Vervangende tekst wanneer geen naam bekend is.
   ///
   /// In nl, this message translates to:
   /// **'Geen naam'**
   String get noName;
 
-  /// No description provided for @noUid.
+  /// Vervangende tekst wanneer geen gebruikers-ID bekend is.
   ///
   /// In nl, this message translates to:
   /// **'Geen gebruikers-ID'**
   String get noUid;
 
-  /// No description provided for @signOut.
+  /// Actie waarmee de gebruiker uitlogt.
   ///
   /// In nl, this message translates to:
   /// **'Uitloggen'**
   String get signOut;
 
-  /// No description provided for @menu.
+  /// Toegankelijkheidslabel voor de menuknop.
   ///
   /// In nl, this message translates to:
   /// **'Menu'**
   String get menu;
 
-  /// No description provided for @profile.
+  /// Titel en navigatielabel van het gebruikersprofiel.
   ///
   /// In nl, this message translates to:
   /// **'Profiel'**
   String get profile;
 
-  /// No description provided for @settings.
+  /// Titel en navigatielabel van de instellingenpagina.
   ///
   /// In nl, this message translates to:
   /// **'Instellingen'**
   String get settings;
 
-  /// No description provided for @noProfileFound.
+  /// Melding wanneer het profiel van de gebruiker ontbreekt.
   ///
   /// In nl, this message translates to:
   /// **'Geen profiel gevonden'**
   String get noProfileFound;
 
-  /// No description provided for @appLanguage.
+  /// Label voor de instelling waarmee de taal van de app wordt gekozen.
   ///
   /// In nl, this message translates to:
   /// **'App-taal'**
   String get appLanguage;
 
-  /// No description provided for @dutch.
+  /// Naam van de Nederlandse taal in een taalkeuzelijst.
   ///
   /// In nl, this message translates to:
   /// **'Nederlands'**
   String get dutch;
 
-  /// No description provided for @english.
+  /// Naam van de Engelse taal in een taalkeuzelijst.
   ///
   /// In nl, this message translates to:
   /// **'Engels'**
   String get english;
 
-  /// No description provided for @languageSaveFailed.
+  /// Foutmelding wanneer het opslaan van de gekozen app-taal mislukt.
   ///
   /// In nl, this message translates to:
   /// **'De taal kon niet worden opgeslagen.'**
   String get languageSaveFailed;
 
-  /// No description provided for @themeValue.
+  /// Toont het momenteel ingestelde thema. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Thema: {value}'**
   String themeValue(String value);
 
-  /// No description provided for @profileCompleteValue.
+  /// Geeft aan of het gebruikersprofiel compleet is. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Profiel compleet: {value}'**
   String profileCompleteValue(String value);
 
-  /// No description provided for @createdAtValue.
+  /// Toont wanneer het profiel is aangemaakt. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Aangemaakt: {value}'**
   String createdAtValue(String value);
 
-  /// No description provided for @lastLoginValue.
+  /// Toont het tijdstip van de laatste login. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Laatste login: {value}'**
   String lastLoginValue(String value);
 
-  /// No description provided for @yes.
+  /// Bevestigende waarde voor een boolean.
   ///
   /// In nl, this message translates to:
   /// **'Ja'**
   String get yes;
 
-  /// No description provided for @no.
+  /// Ontkennende waarde voor een boolean.
   ///
   /// In nl, this message translates to:
   /// **'Nee'**
   String get no;
 
-  /// No description provided for @notAvailable.
+  /// Vervangende tekst wanneer een waarde niet beschikbaar is.
   ///
   /// In nl, this message translates to:
   /// **'Niet beschikbaar'**
   String get notAvailable;
 
-  /// No description provided for @theme.
+  /// Titel van de thema-instellingen.
   ///
   /// In nl, this message translates to:
   /// **'Thema'**
   String get theme;
 
-  /// No description provided for @systemTheme.
+  /// Thema-optie die de systeeminstelling van het apparaat volgt.
   ///
   /// In nl, this message translates to:
   /// **'Systeem'**
   String get systemTheme;
 
-  /// No description provided for @lightTheme.
+  /// Naam van het lichte kleurenthema.
   ///
   /// In nl, this message translates to:
   /// **'Licht'**
   String get lightTheme;
 
-  /// No description provided for @darkTheme.
+  /// Naam van het donkere kleurenthema.
   ///
   /// In nl, this message translates to:
   /// **'Donker'**
   String get darkTheme;
 
-  /// No description provided for @versionValue.
+  /// Debug-informatie met het versienummer. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Versie: {value}'**
   String versionValue(String value);
 
-  /// No description provided for @branchValue.
+  /// Debug-informatie met de Git-branch. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Branch: {value}'**
   String branchValue(String value);
 
-  /// No description provided for @commitValue.
+  /// Debug-informatie met de Git-commit. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Commit: {value}'**
   String commitValue(String value);
 
-  /// No description provided for @builtValue.
+  /// Debug-informatie met het buildtijdstip. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Gebouwd: {value}'**
   String builtValue(String value);
 
-  /// No description provided for @platformValue.
+  /// Debug-informatie met het actieve platform. Laat {value} ongewijzigd.
   ///
   /// In nl, this message translates to:
   /// **'Platform: {value}'**

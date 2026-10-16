@@ -47,5 +47,9 @@ uitsluitend tegen een lokale `demo-*` Firebase-emulator.
 Lees voor iedere app die van deze boilerplate wordt afgeleid eerst het
 [Firestore-protocol](docs/firestore-derived-app-protocol.md).
 
+Vertalingen worden via aparte Git-branches aangeleverd. Zie de
+[Git-workflow voor vertalingen](docs/translation-workflow.md). Controleer een
+wijziging met `dart run tool/check_translations.dart`.
+
 ## Release
 - web app (host): flutter build web --releasename: flutter_firebase_boilerplate

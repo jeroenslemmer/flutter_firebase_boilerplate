@@ -1,56 +1,142 @@
 {
   "@@locale": "nl",
   "login": "Inloggen",
+  "@login": { "description": "Primaire knop waarmee de gebruiker inlogt." },
   "email": "E-mail",
+  "@email": { "description": "Label voor het veld waarin de gebruiker het e-mailadres invoert." },
   "password": "Wachtwoord",
+  "@password": { "description": "Label voor het wachtwoordveld." },
   "createNewAccount": "Nieuw account maken",
+  "@createNewAccount": { "description": "Actie waarmee een gebruiker naar registratie gaat." },
   "signInWithGoogle": "Inloggen met Google",
+  "@signInWithGoogle": { "description": "Knoptekst voor aanmelden met een Google-account." },
   "googleSignInPreparing": "Inloggen met Google voorbereiden…",
+  "@googleSignInPreparing": { "description": "Tijdelijke status terwijl Google Sign-In wordt voorbereid." },
   "googleSignInUnavailable": "Inloggen met Google is niet beschikbaar: {error}",
-  "@googleSignInUnavailable": { "placeholders": { "error": { "type": "String" } } },
+  "@googleSignInUnavailable": {
+    "description": "Foutmelding wanneer Google Sign-In niet gestart kan worden. Laat {error} ongewijzigd.",
+    "placeholders": {
+      "error": { "type": "String", "description": "Technische foutmelding die automatisch wordt ingevuld." }
+    }
+  },
   "register": "Registreren",
+  "@register": { "description": "Titel of actie voor het registratiescherm." },
   "confirmPassword": "Bevestig wachtwoord",
+  "@confirmPassword": { "description": "Label voor het veld waarin het wachtwoord wordt herhaald." },
   "createAccount": "Account maken",
+  "@createAccount": { "description": "Primaire knop waarmee een nieuw account wordt aangemaakt." },
   "passwordsDoNotMatch": "Wachtwoorden komen niet overeen.",
+  "@passwordsDoNotMatch": { "description": "Validatiefout wanneer de twee ingevoerde wachtwoorden verschillen." },
   "errorWithDetails": "Er is iets misgegaan: {error}",
-  "@errorWithDetails": { "placeholders": { "error": { "type": "String" } } },
+  "@errorWithDetails": {
+    "description": "Algemene foutmelding met technische details. Laat {error} ongewijzigd.",
+    "placeholders": {
+      "error": { "type": "String", "description": "Technische foutmelding die automatisch wordt ingevuld." }
+    }
+  },
   "home": "Home",
+  "@home": { "description": "Naam van de hoofdpagina in de navigatie." },
   "welcome": "Welkom",
+  "@welcome": { "description": "Begroeting op de hoofdpagina." },
   "noEmail": "Geen e-mailadres",
+  "@noEmail": { "description": "Vervangende tekst wanneer geen e-mailadres bekend is." },
   "noName": "Geen naam",
+  "@noName": { "description": "Vervangende tekst wanneer geen naam bekend is." },
   "noUid": "Geen gebruikers-ID",
+  "@noUid": { "description": "Vervangende tekst wanneer geen gebruikers-ID bekend is." },
   "signOut": "Uitloggen",
+  "@signOut": { "description": "Actie waarmee de gebruiker uitlogt." },
   "menu": "Menu",
+  "@menu": { "description": "Toegankelijkheidslabel voor de menuknop." },
   "profile": "Profiel",
+  "@profile": { "description": "Titel en navigatielabel van het gebruikersprofiel." },
   "settings": "Instellingen",
+  "@settings": { "description": "Titel en navigatielabel van de instellingenpagina." },
   "noProfileFound": "Geen profiel gevonden",
+  "@noProfileFound": { "description": "Melding wanneer het profiel van de gebruiker ontbreekt." },
   "appLanguage": "App-taal",
+  "@appLanguage": { "description": "Label voor de instelling waarmee de taal van de app wordt gekozen." },
   "dutch": "Nederlands",
+  "@dutch": { "description": "Naam van de Nederlandse taal in een taalkeuzelijst." },
   "english": "Engels",
+  "@english": { "description": "Naam van de Engelse taal in een taalkeuzelijst." },
   "languageSaveFailed": "De taal kon niet worden opgeslagen.",
+  "@languageSaveFailed": { "description": "Foutmelding wanneer het opslaan van de gekozen app-taal mislukt." },
   "themeValue": "Thema: {value}",
-  "@themeValue": { "placeholders": { "value": { "type": "String" } } },
+  "@themeValue": {
+    "description": "Toont het momenteel ingestelde thema. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Vertaalde naam van het actieve thema." }
+    }
+  },
   "profileCompleteValue": "Profiel compleet: {value}",
-  "@profileCompleteValue": { "placeholders": { "value": { "type": "String" } } },
+  "@profileCompleteValue": {
+    "description": "Geeft aan of het gebruikersprofiel compleet is. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Vertaalde ja/nee-waarde." }
+    }
+  },
   "createdAtValue": "Aangemaakt: {value}",
-  "@createdAtValue": { "placeholders": { "value": { "type": "String" } } },
+  "@createdAtValue": {
+    "description": "Toont wanneer het profiel is aangemaakt. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Geformatteerde datum en tijd." }
+    }
+  },
   "lastLoginValue": "Laatste login: {value}",
-  "@lastLoginValue": { "placeholders": { "value": { "type": "String" } } },
+  "@lastLoginValue": {
+    "description": "Toont het tijdstip van de laatste login. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Geformatteerde datum en tijd." }
+    }
+  },
   "yes": "Ja",
+  "@yes": { "description": "Bevestigende waarde voor een boolean." },
   "no": "Nee",
+  "@no": { "description": "Ontkennende waarde voor een boolean." },
   "notAvailable": "Niet beschikbaar",
+  "@notAvailable": { "description": "Vervangende tekst wanneer een waarde niet beschikbaar is." },
   "theme": "Thema",
+  "@theme": { "description": "Titel van de thema-instellingen." },
   "systemTheme": "Systeem",
+  "@systemTheme": { "description": "Thema-optie die de systeeminstelling van het apparaat volgt." },
   "lightTheme": "Licht",
+  "@lightTheme": { "description": "Naam van het lichte kleurenthema." },
   "darkTheme": "Donker",
+  "@darkTheme": { "description": "Naam van het donkere kleurenthema." },
   "versionValue": "Versie: {value}",
-  "@versionValue": { "placeholders": { "value": { "type": "String" } } },
+  "@versionValue": {
+    "description": "Debug-informatie met het versienummer. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Versienummer van de app." }
+    }
+  },
   "branchValue": "Branch: {value}",
-  "@branchValue": { "placeholders": { "value": { "type": "String" } } },
+  "@branchValue": {
+    "description": "Debug-informatie met de Git-branch. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Naam van de Git-branch." }
+    }
+  },
   "commitValue": "Commit: {value}",
-  "@commitValue": { "placeholders": { "value": { "type": "String" } } },
+  "@commitValue": {
+    "description": "Debug-informatie met de Git-commit. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Identificatie van de Git-commit." }
+    }
+  },
   "builtValue": "Gebouwd: {value}",
-  "@builtValue": { "placeholders": { "value": { "type": "String" } } },
+  "@builtValue": {
+    "description": "Debug-informatie met het buildtijdstip. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Geformatteerde datum en tijd van de build." }
+    }
+  },
   "platformValue": "Platform: {value}",
-  "@platformValue": { "placeholders": { "value": { "type": "String" } } }
+  "@platformValue": {
+    "description": "Debug-informatie met het actieve platform. Laat {value} ongewijzigd.",
+    "placeholders": {
+      "value": { "type": "String", "description": "Naam van het actieve platform." }
+    }
+  }
 }
