@@ -19,7 +19,7 @@ nodig.
 4. Activeer in **Firebase Console → Authentication → Sign-in method**:
    - Email/Password
    - Google
-   - Apple voor apps die op iOS/macOS worden uitgebracht
+   - Apple voor apps die op iOS worden uitgebracht
 5. Controleer onder **Settings → Authorized domains** alle webdomeinen.
 6. Pas onder **Templates** de afzender, verificatiemail en resetmail aan op de
    naam en huisstijl van de afgeleide app.
@@ -43,9 +43,7 @@ een productie-app.
    Service ID, Team ID, Key ID en private key in.
 3. Open `ios/Runner.xcworkspace` en controleer bij **Signing & Capabilities** dat
    Sign in with Apple gekoppeld is aan het juiste team en bundle-id.
-4. Herhaal dit voor macOS wanneer die variant wordt uitgebracht.
-
-De entitlement-bestanden staan al in het project; Apple Developer en Firebase
+De iOS-entitlement staat al in het project; Apple Developer en Firebase
 moeten nog per afgeleide app worden gekoppeld.
 
 ## 4. Firestore en accountverwijdering

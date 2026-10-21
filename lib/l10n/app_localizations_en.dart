@@ -276,4 +276,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authErrorUnknown => 'Authentication failed. Try again.';
+
+  @override
+  String get profileSyncFailed =>
+      'You are signed in, but your profile could not be loaded. Please try again.';
+
+  @override
+  String get profileSyncPermissionDenied =>
+      'You are signed in, but Firestore denied access to your profile. Check the deployed security rules.';
+
+  @override
+  String get profileSyncUnavailable =>
+      'You are signed in, but profile storage is temporarily unavailable.';
+
+  @override
+  String get authErrorKeychain =>
+      'Firebase cannot use the macOS keychain. Check Keychain Sharing and Apple code signing.';
 }

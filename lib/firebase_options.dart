@@ -68,11 +68,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC_qwgKQpQMgjZwZo9i7-uIIcfeaWsFDZ0',
-    appId: '1:208926840684:ios:c2453930fa8a368f80c549',
+    appId: '1:208926840684:ios:83111a68f0298e1680c549',
     messagingSenderId: '208926840684',
     projectId: 'base-app-f5a6e',
     storageBucket: 'base-app-f5a6e.firebasestorage.app',
-    iosBundleId: 'com.example.flutterFirebaseBoilerplate',
+    iosBundleId: 'com.example.flutterFirebaseBoilerplate.mac',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

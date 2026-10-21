@@ -565,6 +565,30 @@ abstract class AppLocalizations {
   /// In nl, this message translates to:
   /// **'Authenticatie is mislukt. Probeer het opnieuw.'**
   String get authErrorUnknown;
+
+  /// Algemene fout bij het synchroniseren van het Firestore-profiel na authenticatie.
+  ///
+  /// In nl, this message translates to:
+  /// **'Je bent ingelogd, maar je profiel kon niet worden geladen. Probeer het opnieuw.'**
+  String get profileSyncFailed;
+
+  /// Firestore security rules blokkeren het gebruikersprofiel.
+  ///
+  /// In nl, this message translates to:
+  /// **'Je bent ingelogd, maar Firestore weigert toegang tot je profiel. Controleer de gedeployde security rules.'**
+  String get profileSyncPermissionDenied;
+
+  /// Firestore is tijdelijk niet bereikbaar.
+  ///
+  /// In nl, this message translates to:
+  /// **'Je bent ingelogd, maar de profielopslag is tijdelijk niet bereikbaar.'**
+  String get profileSyncUnavailable;
+
+  /// Firebase Auth kan op macOS de keychain niet benaderen.
+  ///
+  /// In nl, this message translates to:
+  /// **'Firebase kan de macOS-sleutelhanger niet gebruiken. Controleer Keychain Sharing en de Apple-ondertekening.'**
+  String get authErrorKeychain;
 }
 
 class _AppLocalizationsDelegate

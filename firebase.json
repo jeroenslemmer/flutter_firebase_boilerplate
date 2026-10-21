@@ -19,7 +19,7 @@
       "macos": {
         "default": {
           "projectId": "base-app-f5a6e",
-          "appId": "1:208926840684:ios:c2453930fa8a368f80c549",
+          "appId": "1:208926840684:ios:83111a68f0298e1680c549",
           "uploadDebugSymbols": false,
           "fileOutput": "macos/Runner/GoogleService-Info.plist"
         }
@@ -30,7 +30,7 @@
           "configurations": {
             "android": "1:208926840684:android:2d6299af884424c280c549",
             "ios": "1:208926840684:ios:c2453930fa8a368f80c549",
-            "macos": "1:208926840684:ios:c2453930fa8a368f80c549",
+            "macos": "1:208926840684:ios:83111a68f0298e1680c549",
             "web": "1:208926840684:web:4419e642586b8be780c549",
             "windows": "1:208926840684:web:6269cdfb0837cdab80c549"
           }

@@ -277,4 +277,20 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get authErrorUnknown =>
       'Authenticatie is mislukt. Probeer het opnieuw.';
+
+  @override
+  String get profileSyncFailed =>
+      'Je bent ingelogd, maar je profiel kon niet worden geladen. Probeer het opnieuw.';
+
+  @override
+  String get profileSyncPermissionDenied =>
+      'Je bent ingelogd, maar Firestore weigert toegang tot je profiel. Controleer de gedeployde security rules.';
+
+  @override
+  String get profileSyncUnavailable =>
+      'Je bent ingelogd, maar de profielopslag is tijdelijk niet bereikbaar.';
+
+  @override
+  String get authErrorKeychain =>
+      'Firebase kan de macOS-sleutelhanger niet gebruiken. Controleer Keychain Sharing en de Apple-ondertekening.';
 }

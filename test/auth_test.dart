@@ -51,5 +51,14 @@ void main() {
       expect(message, dutch.authErrorUnknown);
       expect(message, isNot(contains(secret)));
     });
+
+    test('distinguishes a Firestore profile permission error', () {
+      final message = authErrorMessage(
+        FirebaseException(plugin: 'cloud_firestore', code: 'permission-denied'),
+        dutch,
+      );
+
+      expect(message, dutch.profileSyncPermissionDenied);
+    });
   });
 }

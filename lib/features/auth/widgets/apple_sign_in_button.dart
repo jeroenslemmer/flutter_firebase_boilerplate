@@ -36,10 +36,7 @@ class _AppleSignInButtonState extends ConsumerState<AppleSignInButton> {
 
   @override
   Widget build(BuildContext context) {
-    final supported =
-        !kIsWeb &&
-        (defaultTargetPlatform == TargetPlatform.iOS ||
-            defaultTargetPlatform == TargetPlatform.macOS);
+    final supported = !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
     if (!supported) {
       return const SizedBox.shrink();
     }

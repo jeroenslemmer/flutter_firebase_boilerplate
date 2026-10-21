@@ -215,5 +215,13 @@
   "authErrorCancelled": "Het inloggen is geannuleerd.",
   "@authErrorCancelled": { "description": "Melding wanneer de gebruiker een externe inlogflow annuleert." },
   "authErrorUnknown": "Authenticatie is mislukt. Probeer het opnieuw.",
-  "@authErrorUnknown": { "description": "Veilige algemene authenticatiefout zonder technische details." }
+  "@authErrorUnknown": { "description": "Veilige algemene authenticatiefout zonder technische details." },
+  "profileSyncFailed": "Je bent ingelogd, maar je profiel kon niet worden geladen. Probeer het opnieuw.",
+  "@profileSyncFailed": { "description": "Algemene fout bij het synchroniseren van het Firestore-profiel na authenticatie." },
+  "profileSyncPermissionDenied": "Je bent ingelogd, maar Firestore weigert toegang tot je profiel. Controleer de gedeployde security rules.",
+  "@profileSyncPermissionDenied": { "description": "Firestore security rules blokkeren het gebruikersprofiel." },
+  "profileSyncUnavailable": "Je bent ingelogd, maar de profielopslag is tijdelijk niet bereikbaar.",
+  "@profileSyncUnavailable": { "description": "Firestore is tijdelijk niet bereikbaar." },
+  "authErrorKeychain": "Firebase kan de macOS-sleutelhanger niet gebruiken. Controleer Keychain Sharing en de Apple-ondertekening.",
+  "@authErrorKeychain": { "description": "Firebase Auth kan op macOS de keychain niet benaderen." }
 }

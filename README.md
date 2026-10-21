@@ -24,7 +24,7 @@ samples, guidance on mobile development, and a full API reference.
 - [x] Email/password login
 - [x] Google Sign-In (web)
 - [x] Google Sign-In (iOS)
-- [x] Apple Sign-In (iOS/macOS; configuratie per afgeleide app vereist)
+- [x] Apple Sign-In (iOS; configuratie per afgeleide app vereist)
 
 ### Fase 2
 - [ ] Settings
