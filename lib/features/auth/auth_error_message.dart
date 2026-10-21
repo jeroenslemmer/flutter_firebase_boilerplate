@@ -33,6 +33,8 @@ String authErrorMessage(Object error, AppLocalizations l10n) {
     'operation-not-allowed' => l10n.authErrorOperationNotAllowed,
     'requires-recent-login' => l10n.authErrorRequiresRecentLogin,
     'keychain-error' => l10n.authErrorKeychain,
+    'expired-action-code' ||
+    'invalid-action-code' => l10n.invalidPasswordResetLink,
     'missing-password' => l10n.authErrorPasswordRequired,
     'unsupported-provider' => l10n.authErrorUnsupportedProvider,
     'popup-closed-by-user' ||

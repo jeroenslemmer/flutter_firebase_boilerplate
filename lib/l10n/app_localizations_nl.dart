@@ -88,6 +88,9 @@ class AppLocalizationsNl extends AppLocalizations {
   String get english => 'Engels';
 
   @override
+  String get french => 'Frans';
+
+  @override
   String get languageSaveFailed => 'De taal kon niet worden opgeslagen.';
 
   @override
@@ -293,4 +296,32 @@ class AppLocalizationsNl extends AppLocalizations {
   @override
   String get authErrorKeychain =>
       'Firebase kan de macOS-sleutelhanger niet gebruiken. Controleer Keychain Sharing en de Apple-ondertekening.';
+
+  @override
+  String get changePassword => 'Wachtwoord wijzigen';
+
+  @override
+  String get newPassword => 'Nieuw wachtwoord';
+
+  @override
+  String get confirmNewPassword => 'Nieuw wachtwoord herhalen';
+
+  @override
+  String get savePassword => 'Wachtwoord opslaan';
+
+  @override
+  String get passwordChanged => 'Je wachtwoord is gewijzigd.';
+
+  @override
+  String get chooseNewPassword => 'Kies een nieuw wachtwoord';
+
+  @override
+  String get invalidPasswordResetLink =>
+      'Deze herstellink is ongeldig of verlopen. Vraag vanuit het inlogscherm een nieuwe link aan.';
+
+  @override
+  String get showPassword => 'Wachtwoord tonen';
+
+  @override
+  String get hidePassword => 'Wachtwoord verbergen';
 }

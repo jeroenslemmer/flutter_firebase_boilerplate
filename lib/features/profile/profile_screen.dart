@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../auth/auth_provider.dart';
 import '../auth/user_profile_provider.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../core/widgets/password_field.dart';
 import '../../l10n/app_localizations.dart';
 import '../auth/auth_error_message.dart';
 
@@ -17,6 +18,7 @@ class ProfileScreen extends ConsumerStatefulWidget {
 class _ProfileScreenState extends ConsumerState<ProfileScreen> {
   bool _isSavingLanguage = false;
   bool _isDeletingAccount = false;
+  bool _isChangingPassword = false;
 
   Future<void> _setLanguage(String uid, String language) async {
     setState(() => _isSavingLanguage = true);
@@ -60,11 +62,10 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               Text(l10n.deleteAccountWarning),
               if (appUser.usesPassword) ...[
                 AppSpacing.gapMd,
-                TextField(
-                  obscureText: true,
+                PasswordField(
+                  labelText: l10n.currentPassword,
                   autofocus: true,
                   onChanged: (value) => password = value,
-                  decoration: InputDecoration(labelText: l10n.currentPassword),
                 ),
               ],
             ],
@@ -108,6 +109,107 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     }
   }
 
+  Future<void> _changePassword() async {
+    final l10n = AppLocalizations.of(context)!;
+    final formKey = GlobalKey<FormState>();
+    final currentPasswordController = TextEditingController();
+    final newPasswordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: Text(l10n.changePassword),
+        content: Form(
+          key: formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                PasswordField(
+                  labelText: l10n.currentPassword,
+                  controller: currentPasswordController,
+                  autofocus: true,
+                  autofillHints: const [AutofillHints.password],
+                  validator: (value) => value == null || value.isEmpty
+                      ? l10n.enterPassword
+                      : null,
+                ),
+                AppSpacing.gapMd,
+                PasswordField(
+                  labelText: l10n.newPassword,
+                  controller: newPasswordController,
+                  autofillHints: const [AutofillHints.newPassword],
+                  validator: (value) => value == null || value.length < 6
+                      ? l10n.passwordMinimumLength
+                      : null,
+                ),
+                AppSpacing.gapMd,
+                PasswordField(
+                  labelText: l10n.confirmNewPassword,
+                  controller: confirmPasswordController,
+                  autofillHints: const [AutofillHints.newPassword],
+                  validator: (value) => value != newPasswordController.text
+                      ? l10n.passwordsDoNotMatch
+                      : null,
+                ),
+              ],
+            ),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(dialogContext, false),
+            child: Text(l10n.cancel),
+          ),
+          FilledButton(
+            onPressed: () {
+              if (formKey.currentState!.validate()) {
+                Navigator.pop(dialogContext, true);
+              }
+            },
+            child: Text(l10n.savePassword),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) {
+      currentPasswordController.dispose();
+      newPasswordController.dispose();
+      confirmPasswordController.dispose();
+      return;
+    }
+
+    setState(() => _isChangingPassword = true);
+    try {
+      await ref
+          .read(authControllerProvider)
+          .changePassword(
+            currentPassword: currentPasswordController.text,
+            newPassword: newPasswordController.text,
+          );
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(l10n.passwordChanged)));
+      }
+    } catch (error) {
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(authErrorMessage(error, l10n))));
+      }
+    } finally {
+      currentPasswordController.dispose();
+      newPasswordController.dispose();
+      confirmPasswordController.dispose();
+      if (mounted) {
+        setState(() => _isChangingPassword = false);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -130,6 +232,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               DropdownButtonFormField<String>(
                 initialValue: switch (profile.language) {
                   'en' => 'en',
+                  'fr' => 'fr',
                   _ => 'nl',
                 },
                 decoration: InputDecoration(
@@ -139,6 +242,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 items: [
                   DropdownMenuItem(value: 'nl', child: Text(l10n.dutch)),
                   DropdownMenuItem(value: 'en', child: Text(l10n.english)),
+                  DropdownMenuItem(value: 'fr', child: Text(l10n.french)),
                 ],
                 onChanged: _isSavingLanguage
                     ? null
@@ -174,6 +278,20 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
               AppSpacing.gapMd,
               Text(l10n.account, style: Theme.of(context).textTheme.titleLarge),
               AppSpacing.gapMd,
+              if (ref.watch(authStateProvider).valueOrNull?.usesPassword ==
+                  true) ...[
+                FilledButton.tonalIcon(
+                  onPressed: _isChangingPassword ? null : _changePassword,
+                  icon: _isChangingPassword
+                      ? const SizedBox.square(
+                          dimension: 18,
+                          child: CircularProgressIndicator(strokeWidth: 2),
+                        )
+                      : const Icon(Icons.password_outlined),
+                  label: Text(l10n.changePassword),
+                ),
+                AppSpacing.gapSm,
+              ],
               FilledButton.tonalIcon(
                 onPressed: _isDeletingAccount ? null : _deleteAccount,
                 icon: _isDeletingAccount

@@ -60,6 +60,14 @@ class AuthService {
     await _auth.sendPasswordResetEmail(email: email);
   }
 
+  Future<String> verifyPasswordResetCode(String code) {
+    return _auth.verifyPasswordResetCode(code);
+  }
+
+  Future<void> confirmPasswordReset(String code, String newPassword) {
+    return _auth.confirmPasswordReset(code: code, newPassword: newPassword);
+  }
+
   Future<void> sendEmailVerification({required String languageCode}) async {
     final user = _requireCurrentUser();
     await _auth.setLanguageCode(languageCode);
@@ -151,6 +159,10 @@ class AuthService {
 
   Future<void> deleteCurrentUser() async {
     await _requireCurrentUser().delete();
+  }
+
+  Future<void> updatePassword(String newPassword) {
+    return _requireCurrentUser().updatePassword(newPassword);
   }
 
   Future<void> _handleWebGoogleAuthenticationEvent(

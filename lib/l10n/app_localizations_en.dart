@@ -88,6 +88,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get english => 'English';
 
   @override
+  String get french => 'French';
+
+  @override
   String get languageSaveFailed => 'The language could not be saved.';
 
   @override
@@ -292,4 +295,32 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get authErrorKeychain =>
       'Firebase cannot use the macOS keychain. Check Keychain Sharing and Apple code signing.';
+
+  @override
+  String get changePassword => 'Change password';
+
+  @override
+  String get newPassword => 'New password';
+
+  @override
+  String get confirmNewPassword => 'Repeat new password';
+
+  @override
+  String get savePassword => 'Save password';
+
+  @override
+  String get passwordChanged => 'Your password has been changed.';
+
+  @override
+  String get chooseNewPassword => 'Choose a new password';
+
+  @override
+  String get invalidPasswordResetLink =>
+      'This reset link is invalid or has expired. Request a new link from the login screen.';
+
+  @override
+  String get showPassword => 'Show password';
+
+  @override
+  String get hidePassword => 'Hide password';
 }

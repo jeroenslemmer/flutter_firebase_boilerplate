@@ -8,6 +8,7 @@ import 'register_screen.dart';
 import 'widgets/apple_sign_in_button.dart';
 import 'widgets/google_sign_in_button.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../core/widgets/password_field.dart';
 import '../../l10n/app_localizations.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -25,6 +26,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   AuthController get _authController => ref.read(authControllerProvider);
 
   bool _loading = false;
+
+  Future<void> _openForgotPassword() async {
+    final resetEmailSent = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) =>
+            ForgotPasswordScreen(initialEmail: _emailController.text.trim()),
+      ),
+    );
+
+    if (resetEmailSent == true && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.passwordResetEmailSent),
+        ),
+      );
+    }
+  }
 
   Future<void> _login() async {
     final l10n = AppLocalizations.of(context)!;
@@ -91,12 +110,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                   AppSpacing.gapMd,
 
-                  TextFormField(
+                  PasswordField(
+                    labelText: l10n.password,
                     controller: _passwordController,
-                    obscureText: true,
                     autofillHints: const [AutofillHints.password],
                     textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(labelText: l10n.password),
                     validator: (value) => value == null || value.isEmpty
                         ? l10n.enterPassword
                         : null,
@@ -106,16 +124,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: _loading
-                          ? null
-                          : () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => ForgotPasswordScreen(
-                                  initialEmail: _emailController.text.trim(),
-                                ),
-                              ),
-                            ),
+                      onPressed: _loading ? null : _openForgotPassword,
                       child: Text(l10n.forgotPassword),
                     ),
                   ),

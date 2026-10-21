@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/firebase/firebase_service.dart';
 import 'core/router/app_router.dart';
+import 'core/router/url_strategy.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/user_profile_provider.dart';
 import 'l10n/app_localizations.dart';
@@ -16,6 +17,7 @@ import 'core/preferences/preferences_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureUrlStrategy();
 
   await FirebaseService.init();
 
@@ -44,7 +46,11 @@ class MyApp extends ConsumerWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
 
-      locale: Locale(profile?.language == 'en' ? 'en' : 'nl'),
+      locale: Locale(switch (profile?.language) {
+        'en' => 'en',
+        'fr' => 'fr',
+        _ => 'nl',
+      }),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
 

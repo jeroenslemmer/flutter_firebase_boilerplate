@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'auth_provider.dart';
 import 'auth_error_message.dart';
 import '../../core/theme/app_spacing.dart';
+import '../../core/widgets/password_field.dart';
 import '../../l10n/app_localizations.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
@@ -102,12 +103,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
                   AppSpacing.gapMd,
 
-                  TextFormField(
+                  PasswordField(
+                    labelText: l10n.password,
                     controller: _passwordController,
-                    obscureText: true,
                     autofillHints: const [AutofillHints.newPassword],
                     textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(labelText: l10n.password),
                     validator: (value) => value == null || value.length < 6
                         ? l10n.passwordMinimumLength
                         : null,
@@ -115,14 +115,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
 
                   AppSpacing.gapMd,
 
-                  TextFormField(
+                  PasswordField(
+                    labelText: l10n.confirmPassword,
                     controller: _confirmPasswordController,
-                    obscureText: true,
                     autofillHints: const [AutofillHints.newPassword],
                     textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      labelText: l10n.confirmPassword,
-                    ),
                     validator: (value) => value == null || value.isEmpty
                         ? l10n.enterPasswordConfirmation
                         : null,

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/auth/login_screen.dart';
 import '../../features/auth/email_verification_screen.dart';
+import '../../features/auth/password_reset_action_screen.dart';
 import '../../features/shell/app_shell.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'auth_refresh_notifier.dart';
@@ -25,6 +26,11 @@ final GoRouter appRouter = GoRouter(
 
     final loggingIn = state.matchedLocation == '/login';
     final verifyingEmail = state.matchedLocation == '/verify-email';
+    final handlingEmailAction = state.matchedLocation == '/auth/action';
+
+    if (handlingEmailAction) {
+      return null;
+    }
 
     if (!loggedIn && !loggingIn) {
       return '/login';
@@ -53,6 +59,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         return const AppShell();
       },
+    ),
+
+    GoRoute(
+      path: '/auth/action',
+      builder: (context, state) => PasswordResetActionScreen(
+        mode: state.uri.queryParameters['mode'],
+        actionCode: state.uri.queryParameters['oobCode'],
+      ),
     ),
 
     GoRoute(

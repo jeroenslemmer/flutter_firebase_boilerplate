@@ -25,6 +25,7 @@
   "appLanguage": "App language",
   "dutch": "Dutch",
   "english": "English",
+  "french": "French",
   "languageSaveFailed": "The language could not be saved.",
   "themeValue": "Theme: {value}",
   "profileCompleteValue": "Profile complete: {value}",
@@ -81,5 +82,14 @@
   "profileSyncFailed": "You are signed in, but your profile could not be loaded. Please try again.",
   "profileSyncPermissionDenied": "You are signed in, but Firestore denied access to your profile. Check the deployed security rules.",
   "profileSyncUnavailable": "You are signed in, but profile storage is temporarily unavailable.",
-  "authErrorKeychain": "Firebase cannot use the macOS keychain. Check Keychain Sharing and Apple code signing."
+  "authErrorKeychain": "Firebase cannot use the macOS keychain. Check Keychain Sharing and Apple code signing.",
+  "changePassword": "Change password",
+  "newPassword": "New password",
+  "confirmNewPassword": "Repeat new password",
+  "savePassword": "Save password",
+  "passwordChanged": "Your password has been changed.",
+  "chooseNewPassword": "Choose a new password",
+  "invalidPasswordResetLink": "This reset link is invalid or has expired. Request a new link from the login screen.",
+  "showPassword": "Show password",
+  "hidePassword": "Hide password"
 }

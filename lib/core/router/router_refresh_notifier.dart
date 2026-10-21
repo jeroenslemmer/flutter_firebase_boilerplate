@@ -5,10 +5,7 @@ import '../../features/auth/auth_provider.dart';
 
 class RouterRefreshNotifier extends ChangeNotifier {
   RouterRefreshNotifier(Ref ref) {
-    _subscription = ref.listen(
-      authStateProvider,
-      (_, _) => notifyListeners(),
-    );
+    _subscription = ref.listen(authStateProvider, (_, _) => notifyListeners());
   }
 
   late final ProviderSubscription _subscription;

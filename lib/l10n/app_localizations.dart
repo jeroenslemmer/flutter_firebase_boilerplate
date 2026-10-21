@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_fr.dart';
 import 'app_localizations_nl.dart';
 
 // ignore_for_file: type=lint
@@ -95,6 +96,7 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
+    Locale('fr'),
     Locale('nl'),
   ];
 
@@ -247,6 +249,12 @@ abstract class AppLocalizations {
   /// In nl, this message translates to:
   /// **'Engels'**
   String get english;
+
+  /// Naam van de Franse taal in een taalkeuzelijst.
+  ///
+  /// In nl, this message translates to:
+  /// **'Frans'**
+  String get french;
 
   /// Foutmelding wanneer het opslaan van de gekozen app-taal mislukt.
   ///
@@ -589,6 +597,60 @@ abstract class AppLocalizations {
   /// In nl, this message translates to:
   /// **'Firebase kan de macOS-sleutelhanger niet gebruiken. Controleer Keychain Sharing en de Apple-ondertekening.'**
   String get authErrorKeychain;
+
+  /// Actie en dialoogtitel voor het wijzigen van het wachtwoord.
+  ///
+  /// In nl, this message translates to:
+  /// **'Wachtwoord wijzigen'**
+  String get changePassword;
+
+  /// Label voor het nieuwe wachtwoord.
+  ///
+  /// In nl, this message translates to:
+  /// **'Nieuw wachtwoord'**
+  String get newPassword;
+
+  /// Label voor de bevestiging van het nieuwe wachtwoord.
+  ///
+  /// In nl, this message translates to:
+  /// **'Nieuw wachtwoord herhalen'**
+  String get confirmNewPassword;
+
+  /// Knop waarmee het nieuwe wachtwoord wordt opgeslagen.
+  ///
+  /// In nl, this message translates to:
+  /// **'Wachtwoord opslaan'**
+  String get savePassword;
+
+  /// Bevestiging na een geslaagde wachtwoordwijziging.
+  ///
+  /// In nl, this message translates to:
+  /// **'Je wachtwoord is gewijzigd.'**
+  String get passwordChanged;
+
+  /// Titel van de eigen resetpagina voor een vergeten wachtwoord.
+  ///
+  /// In nl, this message translates to:
+  /// **'Kies een nieuw wachtwoord'**
+  String get chooseNewPassword;
+
+  /// Foutmelding voor een ontbrekende, ongeldige of verlopen wachtwoordresetcode.
+  ///
+  /// In nl, this message translates to:
+  /// **'Deze herstellink is ongeldig of verlopen. Vraag vanuit het inlogscherm een nieuwe link aan.'**
+  String get invalidPasswordResetLink;
+
+  /// Tooltip en toegankelijkheidslabel voor het tonen van een wachtwoord.
+  ///
+  /// In nl, this message translates to:
+  /// **'Wachtwoord tonen'**
+  String get showPassword;
+
+  /// Tooltip en toegankelijkheidslabel voor het verbergen van een wachtwoord.
+  ///
+  /// In nl, this message translates to:
+  /// **'Wachtwoord verbergen'**
+  String get hidePassword;
 }
 
 class _AppLocalizationsDelegate
@@ -602,7 +664,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en', 'nl'].contains(locale.languageCode);
+      <String>['en', 'fr', 'nl'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -613,6 +675,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en':
       return AppLocalizationsEn();
+    case 'fr':
+      return AppLocalizationsFr();
     case 'nl':
       return AppLocalizationsNl();
   }

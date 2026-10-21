@@ -52,6 +52,14 @@ class AuthController {
     );
   }
 
+  Future<String> verifyPasswordResetCode(String code) {
+    return _authService.verifyPasswordResetCode(code);
+  }
+
+  Future<void> confirmPasswordReset(String code, String newPassword) {
+    return _authService.confirmPasswordReset(code, newPassword);
+  }
+
   Future<void> sendEmailVerification({required String languageCode}) {
     return _authService.sendEmailVerification(languageCode: languageCode);
   }
@@ -69,6 +77,14 @@ class AuthController {
     await _authService.reauthenticate(password: password);
     await _firestoreService.deleteUserProfile(appUser.uid);
     await _authService.deleteCurrentUser();
+  }
+
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    await _authService.reauthenticate(password: currentPassword);
+    await _authService.updatePassword(newPassword);
   }
 
   Future<void> _ensureUserProfile() async {
