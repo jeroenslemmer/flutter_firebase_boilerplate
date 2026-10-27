@@ -1,8 +1,9 @@
 # Conceptantwoord voor Firebase Support — case 10433272
 
 De handler is op 27 oktober 2026 gedeployed en bereikbaarheid is in de browser
-gecontroleerd. Bevestig vóór verzending Authorized domains in de Console. Vul de huidige URL uit de Console
-in. Dit bestand verstuurt niets en geeft op zichzelf geen toestemming aan Support.
+gecontroleerd. De huidige Action URL en Authorized domains zijn op dezelfde dag
+live gecontroleerd in de Firebase Console. Het antwoord hieronder is klaar om
+te versturen; er is nog niets verzonden.
 
 ```text
 Hello Marco,
@@ -11,11 +12,11 @@ We would like to proceed with option 1, for the shared Action URL only.
 Please keep the existing email subjects and HTML templates unchanged.
 
 Project ID: base-app-f5a6e
-Current Action URL: [copy the exact current URL from Firebase Console]
+Current Action URL: https://base-app-f5a6e.firebaseapp.com/__/auth/action
 Requested Action URL: https://base-app-f5a6e.web.app/auth/action
 
 - The handler is deployed and reachable at the exact requested URL.
-[Confirm before sending: base-app-f5a6e.web.app is listed under Authorized Domains.]
+- base-app-f5a6e.web.app is listed under Authorized Domains.
 
 The handler supports resetPassword, verifyEmail, recoverEmail and
 verifyAndChangeEmail. We do not use email-link sign-in. Unknown modes and

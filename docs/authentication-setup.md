@@ -127,5 +127,7 @@ Vervang domein en Firebase-project voor iedere afgeleide app.
 - macOS: build zonder ondertekening geslaagd. De normale debugbuild blokkeert
   op een ontbrekend provisioningprofiel; ondertekend draaien is niet getest.
 - Echte e-mailacties op de vier platforms moeten nog worden getest na de
-  gedeelde Action URL-wijziging door Support. Authorized domains is nog niet
-  live gecontroleerd. Zie `firebase-support-action-url.md` voor het concept.
+  gedeelde Action URL-wijziging door Support. Authorized domains is live
+  gecontroleerd: `base-app-f5a6e.web.app` staat in de lijst. De huidige Action
+  URL is `https://base-app-f5a6e.firebaseapp.com/__/auth/action`.
+  Zie `firebase-support-action-url.md` voor het ingevulde antwoord.
