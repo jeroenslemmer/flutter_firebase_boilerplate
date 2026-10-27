@@ -24,6 +24,7 @@ samples, guidance on mobile development, and a full API reference.
 - [x] Email/password login
 - [x] Google Sign-In (web)
 - [x] Google Sign-In (iOS)
+- [ ] Google Sign-In (Android: OAuth-configuratie aanwezig; apparaatacceptatie nog nodig)
 - [x] Apple Sign-In (iOS; configuratie per afgeleide app vereist)
 
 ### Fase 2
@@ -61,3 +62,6 @@ Translations: Edit English**.
 
 ## Release
 - web app (host): flutter build web --releasename: flutter_firebase_boilerplate
+
+Authenticatiemails gebruiken de browserhandler `/auth/action` op web, macOS,
+iOS en Android. Zie [configuratie en acceptatietests](docs/authentication-setup.md#6-gedeelde-action-url), inclusief de vereiste Firebase Support-wijziging.

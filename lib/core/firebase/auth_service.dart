@@ -4,6 +4,9 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../models/app_user.dart';
 
 class AuthService {
+  static const _googleWebClientId =
+      '208926840684-k82tvf91d5m5vsephtpgkkfgqcevcj6f.apps.googleusercontent.com';
+
   final Future<void> Function(String uid)? _onSignedIn;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
@@ -16,10 +19,9 @@ class AuthService {
 
   Future<void> _initGoogle() async {
     if (kIsWeb) {
-      await _googleSignIn.initialize(
-        clientId:
-            '208926840684-k82tvf91d5m5vsephtpgkkfgqcevcj6f.apps.googleusercontent.com',
-      );
+      await _googleSignIn.initialize(clientId: _googleWebClientId);
+    } else if (defaultTargetPlatform == TargetPlatform.android) {
+      await _googleSignIn.initialize(serverClientId: _googleWebClientId);
     } else {
       await _googleSignIn.initialize();
     }
@@ -72,6 +74,21 @@ class AuthService {
     final user = _requireCurrentUser();
     await _auth.setLanguageCode(languageCode);
     await user.sendEmailVerification();
+  }
+
+  Future<void> applyEmailAction(String code, String mode) async {
+    // Check the code before applying it, including email recovery codes.
+    final info = await _auth.checkActionCode(code);
+    final expected = switch (mode) {
+      'verifyEmail' => ActionCodeInfoOperation.verifyEmail,
+      'recoverEmail' => ActionCodeInfoOperation.recoverEmail,
+      'verifyAndChangeEmail' => ActionCodeInfoOperation.verifyAndChangeEmail,
+      _ => null,
+    };
+    if (expected == null || info.operation != expected) {
+      throw FirebaseAuthException(code: 'invalid-action-code');
+    }
+    await _auth.applyActionCode(code);
   }
 
   Future<void> reloadCurrentUser() async {

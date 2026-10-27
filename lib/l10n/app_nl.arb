@@ -1,247 +1,449 @@
 {
   "@@locale": "nl",
   "login": "Inloggen",
-  "@login": { "description": "Primaire knop waarmee de gebruiker inlogt." },
+  "@login": {
+    "description": "Primaire knop waarmee de gebruiker inlogt."
+  },
   "email": "E-mail",
-  "@email": { "description": "Label voor het veld waarin de gebruiker het e-mailadres invoert." },
+  "@email": {
+    "description": "Label voor het veld waarin de gebruiker het e-mailadres invoert."
+  },
   "password": "Wachtwoord",
-  "@password": { "description": "Label voor het wachtwoordveld." },
+  "@password": {
+    "description": "Label voor het wachtwoordveld."
+  },
   "createNewAccount": "Nieuw account maken",
-  "@createNewAccount": { "description": "Actie waarmee een gebruiker naar registratie gaat." },
+  "@createNewAccount": {
+    "description": "Actie waarmee een gebruiker naar registratie gaat."
+  },
   "signInWithGoogle": "Inloggen met Google",
-  "@signInWithGoogle": { "description": "Knoptekst voor aanmelden met een Google-account." },
+  "@signInWithGoogle": {
+    "description": "Knoptekst voor aanmelden met een Google-account."
+  },
   "googleSignInPreparing": "Inloggen met Google voorbereiden…",
-  "@googleSignInPreparing": { "description": "Tijdelijke status terwijl Google Sign-In wordt voorbereid." },
+  "@googleSignInPreparing": {
+    "description": "Tijdelijke status terwijl Google Sign-In wordt voorbereid."
+  },
   "googleSignInUnavailable": "Inloggen met Google is niet beschikbaar: {error}",
   "@googleSignInUnavailable": {
     "description": "Foutmelding wanneer Google Sign-In niet gestart kan worden. Laat {error} ongewijzigd.",
     "placeholders": {
-      "error": { "type": "String", "description": "Technische foutmelding die automatisch wordt ingevuld." }
+      "error": {
+        "type": "String",
+        "description": "Technische foutmelding die automatisch wordt ingevuld."
+      }
     }
   },
   "register": "Registreren",
-  "@register": { "description": "Titel of actie voor het registratiescherm." },
+  "@register": {
+    "description": "Titel of actie voor het registratiescherm."
+  },
   "confirmPassword": "Bevestig wachtwoord",
-  "@confirmPassword": { "description": "Label voor het veld waarin het wachtwoord wordt herhaald." },
+  "@confirmPassword": {
+    "description": "Label voor het veld waarin het wachtwoord wordt herhaald."
+  },
   "createAccount": "Account maken",
-  "@createAccount": { "description": "Primaire knop waarmee een nieuw account wordt aangemaakt." },
+  "@createAccount": {
+    "description": "Primaire knop waarmee een nieuw account wordt aangemaakt."
+  },
   "passwordsDoNotMatch": "Wachtwoorden komen niet overeen.",
-  "@passwordsDoNotMatch": { "description": "Validatiefout wanneer de twee ingevoerde wachtwoorden verschillen." },
+  "@passwordsDoNotMatch": {
+    "description": "Validatiefout wanneer de twee ingevoerde wachtwoorden verschillen."
+  },
   "errorWithDetails": "Er is iets misgegaan: {error}",
   "@errorWithDetails": {
     "description": "Algemene foutmelding met technische details. Laat {error} ongewijzigd.",
     "placeholders": {
-      "error": { "type": "String", "description": "Technische foutmelding die automatisch wordt ingevuld." }
+      "error": {
+        "type": "String",
+        "description": "Technische foutmelding die automatisch wordt ingevuld."
+      }
     }
   },
   "home": "Home",
-  "@home": { "description": "Naam van de hoofdpagina in de navigatie." },
+  "@home": {
+    "description": "Naam van de hoofdpagina in de navigatie."
+  },
   "welcome": "Welkom",
-  "@welcome": { "description": "Begroeting op de hoofdpagina." },
+  "@welcome": {
+    "description": "Begroeting op de hoofdpagina."
+  },
   "noEmail": "Geen e-mailadres",
-  "@noEmail": { "description": "Vervangende tekst wanneer geen e-mailadres bekend is." },
+  "@noEmail": {
+    "description": "Vervangende tekst wanneer geen e-mailadres bekend is."
+  },
   "noName": "Geen naam",
-  "@noName": { "description": "Vervangende tekst wanneer geen naam bekend is." },
+  "@noName": {
+    "description": "Vervangende tekst wanneer geen naam bekend is."
+  },
   "noUid": "Geen gebruikers-ID",
-  "@noUid": { "description": "Vervangende tekst wanneer geen gebruikers-ID bekend is." },
+  "@noUid": {
+    "description": "Vervangende tekst wanneer geen gebruikers-ID bekend is."
+  },
   "signOut": "Uitloggen",
-  "@signOut": { "description": "Actie waarmee de gebruiker uitlogt." },
+  "@signOut": {
+    "description": "Actie waarmee de gebruiker uitlogt."
+  },
   "menu": "Menu",
-  "@menu": { "description": "Toegankelijkheidslabel voor de menuknop." },
+  "@menu": {
+    "description": "Toegankelijkheidslabel voor de menuknop."
+  },
   "profile": "Profiel",
-  "@profile": { "description": "Titel en navigatielabel van het gebruikersprofiel." },
+  "@profile": {
+    "description": "Titel en navigatielabel van het gebruikersprofiel."
+  },
   "settings": "Instellingen",
-  "@settings": { "description": "Titel en navigatielabel van de instellingenpagina." },
+  "@settings": {
+    "description": "Titel en navigatielabel van de instellingenpagina."
+  },
   "noProfileFound": "Geen profiel gevonden",
-  "@noProfileFound": { "description": "Melding wanneer het profiel van de gebruiker ontbreekt." },
+  "@noProfileFound": {
+    "description": "Melding wanneer het profiel van de gebruiker ontbreekt."
+  },
   "appLanguage": "App-taal",
-  "@appLanguage": { "description": "Label voor de instelling waarmee de taal van de app wordt gekozen." },
+  "@appLanguage": {
+    "description": "Label voor de instelling waarmee de taal van de app wordt gekozen."
+  },
   "dutch": "Nederlands",
-  "@dutch": { "description": "Naam van de Nederlandse taal in een taalkeuzelijst." },
+  "@dutch": {
+    "description": "Naam van de Nederlandse taal in een taalkeuzelijst."
+  },
   "english": "Engels",
-  "@english": { "description": "Naam van de Engelse taal in een taalkeuzelijst." },
+  "@english": {
+    "description": "Naam van de Engelse taal in een taalkeuzelijst."
+  },
   "french": "Frans",
-  "@french": { "description": "Naam van de Franse taal in een taalkeuzelijst." },
+  "@french": {
+    "description": "Naam van de Franse taal in een taalkeuzelijst."
+  },
   "languageSaveFailed": "De taal kon niet worden opgeslagen.",
-  "@languageSaveFailed": { "description": "Foutmelding wanneer het opslaan van de gekozen app-taal mislukt." },
+  "@languageSaveFailed": {
+    "description": "Foutmelding wanneer het opslaan van de gekozen app-taal mislukt."
+  },
   "themeValue": "Thema: {value}",
   "@themeValue": {
     "description": "Toont het momenteel ingestelde thema. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Vertaalde naam van het actieve thema." }
+      "value": {
+        "type": "String",
+        "description": "Vertaalde naam van het actieve thema."
+      }
     }
   },
   "profileCompleteValue": "Profiel compleet: {value}",
   "@profileCompleteValue": {
     "description": "Geeft aan of het gebruikersprofiel compleet is. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Vertaalde ja/nee-waarde." }
+      "value": {
+        "type": "String",
+        "description": "Vertaalde ja/nee-waarde."
+      }
     }
   },
   "createdAtValue": "Aangemaakt: {value}",
   "@createdAtValue": {
     "description": "Toont wanneer het profiel is aangemaakt. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Geformatteerde datum en tijd." }
+      "value": {
+        "type": "String",
+        "description": "Geformatteerde datum en tijd."
+      }
     }
   },
   "lastLoginValue": "Laatste login: {value}",
   "@lastLoginValue": {
     "description": "Toont het tijdstip van de laatste login. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Geformatteerde datum en tijd." }
+      "value": {
+        "type": "String",
+        "description": "Geformatteerde datum en tijd."
+      }
     }
   },
   "yes": "Ja",
-  "@yes": { "description": "Bevestigende waarde voor een boolean." },
+  "@yes": {
+    "description": "Bevestigende waarde voor een boolean."
+  },
   "no": "Nee",
-  "@no": { "description": "Ontkennende waarde voor een boolean." },
+  "@no": {
+    "description": "Ontkennende waarde voor een boolean."
+  },
   "notAvailable": "Niet beschikbaar",
-  "@notAvailable": { "description": "Vervangende tekst wanneer een waarde niet beschikbaar is." },
+  "@notAvailable": {
+    "description": "Vervangende tekst wanneer een waarde niet beschikbaar is."
+  },
   "theme": "Thema",
-  "@theme": { "description": "Titel van de thema-instellingen." },
+  "@theme": {
+    "description": "Titel van de thema-instellingen."
+  },
   "systemTheme": "Systeem",
-  "@systemTheme": { "description": "Thema-optie die de systeeminstelling van het apparaat volgt." },
+  "@systemTheme": {
+    "description": "Thema-optie die de systeeminstelling van het apparaat volgt."
+  },
   "lightTheme": "Licht",
-  "@lightTheme": { "description": "Naam van het lichte kleurenthema." },
+  "@lightTheme": {
+    "description": "Naam van het lichte kleurenthema."
+  },
   "darkTheme": "Donker",
-  "@darkTheme": { "description": "Naam van het donkere kleurenthema." },
+  "@darkTheme": {
+    "description": "Naam van het donkere kleurenthema."
+  },
   "versionValue": "Versie: {value}",
   "@versionValue": {
     "description": "Debug-informatie met het versienummer. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Versienummer van de app." }
+      "value": {
+        "type": "String",
+        "description": "Versienummer van de app."
+      }
     }
   },
   "branchValue": "Branch: {value}",
   "@branchValue": {
     "description": "Debug-informatie met de Git-branch. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Naam van de Git-branch." }
+      "value": {
+        "type": "String",
+        "description": "Naam van de Git-branch."
+      }
     }
   },
   "commitValue": "Commit: {value}",
   "@commitValue": {
     "description": "Debug-informatie met de Git-commit. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Identificatie van de Git-commit." }
+      "value": {
+        "type": "String",
+        "description": "Identificatie van de Git-commit."
+      }
     }
   },
   "builtValue": "Gebouwd: {value}",
   "@builtValue": {
     "description": "Debug-informatie met het buildtijdstip. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Geformatteerde datum en tijd van de build." }
+      "value": {
+        "type": "String",
+        "description": "Geformatteerde datum en tijd van de build."
+      }
     }
   },
   "platformValue": "Platform: {value}",
   "@platformValue": {
     "description": "Debug-informatie met het actieve platform. Laat {value} ongewijzigd.",
     "placeholders": {
-      "value": { "type": "String", "description": "Naam van het actieve platform." }
+      "value": {
+        "type": "String",
+        "description": "Naam van het actieve platform."
+      }
     }
   },
   "forgotPassword": "Wachtwoord vergeten?",
-  "@forgotPassword": { "description": "Actie op het inlogscherm om een wachtwoordherstelmail aan te vragen." },
+  "@forgotPassword": {
+    "description": "Actie op het inlogscherm om een wachtwoordherstelmail aan te vragen."
+  },
   "resetPassword": "Wachtwoord herstellen",
-  "@resetPassword": { "description": "Titel van het scherm voor wachtwoordherstel." },
+  "@resetPassword": {
+    "description": "Titel van het scherm voor wachtwoordherstel."
+  },
   "passwordResetInstructions": "Vul je e-mailadres in. Als er een account bestaat, ontvang je een link om je wachtwoord opnieuw in te stellen.",
-  "@passwordResetInstructions": { "description": "Uitleg boven het formulier voor wachtwoordherstel. Vermijd bevestiging dat een account bestaat." },
+  "@passwordResetInstructions": {
+    "description": "Uitleg boven het formulier voor wachtwoordherstel. Vermijd bevestiging dat een account bestaat."
+  },
   "sendResetEmail": "Herstellink versturen",
-  "@sendResetEmail": { "description": "Knop waarmee een wachtwoordherstelmail wordt aangevraagd." },
+  "@sendResetEmail": {
+    "description": "Knop waarmee een wachtwoordherstelmail wordt aangevraagd."
+  },
   "passwordResetEmailSent": "Als er een account voor dit e-mailadres bestaat, is een herstellink verzonden.",
-  "@passwordResetEmailSent": { "description": "Privacyvriendelijke bevestiging na een wachtwoordherstelverzoek." },
+  "@passwordResetEmailSent": {
+    "description": "Privacyvriendelijke bevestiging na een wachtwoordherstelverzoek."
+  },
   "backToLogin": "Terug naar inloggen",
-  "@backToLogin": { "description": "Knop waarmee de gebruiker teruggaat naar het inlogscherm." },
+  "@backToLogin": {
+    "description": "Knop waarmee de gebruiker teruggaat naar het inlogscherm."
+  },
   "enterValidEmail": "Vul een geldig e-mailadres in.",
-  "@enterValidEmail": { "description": "Validatiemelding voor een ontbrekend of ongeldig e-mailadres." },
+  "@enterValidEmail": {
+    "description": "Validatiemelding voor een ontbrekend of ongeldig e-mailadres."
+  },
   "enterPassword": "Vul je wachtwoord in.",
-  "@enterPassword": { "description": "Validatiemelding voor een leeg wachtwoordveld." },
+  "@enterPassword": {
+    "description": "Validatiemelding voor een leeg wachtwoordveld."
+  },
   "passwordMinimumLength": "Gebruik minimaal 6 tekens.",
-  "@passwordMinimumLength": { "description": "Validatiemelding voor een te kort nieuw wachtwoord." },
+  "@passwordMinimumLength": {
+    "description": "Validatiemelding voor een te kort nieuw wachtwoord."
+  },
   "enterPasswordConfirmation": "Herhaal je wachtwoord.",
-  "@enterPasswordConfirmation": { "description": "Validatiemelding voor een lege wachtwoordbevestiging." },
+  "@enterPasswordConfirmation": {
+    "description": "Validatiemelding voor een lege wachtwoordbevestiging."
+  },
   "verifyEmail": "Bevestig je e-mailadres",
-  "@verifyEmail": { "description": "Titel van het scherm voor e-mailverificatie." },
+  "@verifyEmail": {
+    "description": "Titel van het scherm voor e-mailverificatie."
+  },
   "verificationEmailInstructions": "We hebben een bevestigingslink gestuurd naar {email}. Open de link en kom daarna terug naar de app.",
   "@verificationEmailInstructions": {
     "description": "Uitleg nadat een verificatiemail is verstuurd. Laat {email} ongewijzigd.",
     "placeholders": {
-      "email": { "type": "String", "description": "E-mailadres van de ingelogde gebruiker." }
+      "email": {
+        "type": "String",
+        "description": "E-mailadres van de ingelogde gebruiker."
+      }
     }
   },
   "iHaveVerifiedEmail": "Ik heb mijn e-mail bevestigd",
-  "@iHaveVerifiedEmail": { "description": "Knop waarmee opnieuw wordt gecontroleerd of het e-mailadres bevestigd is." },
+  "@iHaveVerifiedEmail": {
+    "description": "Knop waarmee opnieuw wordt gecontroleerd of het e-mailadres bevestigd is."
+  },
   "resendVerificationEmail": "Bevestigingsmail opnieuw versturen",
-  "@resendVerificationEmail": { "description": "Actie waarmee nogmaals een verificatiemail wordt gestuurd." },
+  "@resendVerificationEmail": {
+    "description": "Actie waarmee nogmaals een verificatiemail wordt gestuurd."
+  },
   "verificationEmailResent": "De bevestigingsmail is opnieuw verstuurd.",
-  "@verificationEmailResent": { "description": "Bevestiging nadat opnieuw een verificatiemail is gestuurd." },
+  "@verificationEmailResent": {
+    "description": "Bevestiging nadat opnieuw een verificatiemail is gestuurd."
+  },
   "emailNotVerifiedYet": "Je e-mailadres is nog niet bevestigd.",
-  "@emailNotVerifiedYet": { "description": "Melding wanneer de verificatiecontrole nog geen bevestigd adres vindt." },
+  "@emailNotVerifiedYet": {
+    "description": "Melding wanneer de verificatiecontrole nog geen bevestigd adres vindt."
+  },
   "signInWithApple": "Inloggen met Apple",
-  "@signInWithApple": { "description": "Knoptekst voor aanmelden met een Apple-account." },
+  "@signInWithApple": {
+    "description": "Knoptekst voor aanmelden met een Apple-account."
+  },
   "account": "Account",
-  "@account": { "description": "Titel boven acties die het gebruikersaccount beheren." },
+  "@account": {
+    "description": "Titel boven acties die het gebruikersaccount beheren."
+  },
   "deleteAccount": "Account verwijderen",
-  "@deleteAccount": { "description": "Actie waarmee de gebruiker het eigen account verwijdert." },
+  "@deleteAccount": {
+    "description": "Actie waarmee de gebruiker het eigen account verwijdert."
+  },
   "deleteAccountWarning": "Je account en profiel worden permanent verwijderd. Deze actie kan niet ongedaan worden gemaakt.",
-  "@deleteAccountWarning": { "description": "Waarschuwing in het bevestigingsvenster voor accountverwijdering." },
+  "@deleteAccountWarning": {
+    "description": "Waarschuwing in het bevestigingsvenster voor accountverwijdering."
+  },
   "currentPassword": "Huidig wachtwoord",
-  "@currentPassword": { "description": "Label voor het wachtwoord dat nodig is om een gevoelige actie opnieuw te bevestigen." },
+  "@currentPassword": {
+    "description": "Label voor het wachtwoord dat nodig is om een gevoelige actie opnieuw te bevestigen."
+  },
   "cancel": "Annuleren",
-  "@cancel": { "description": "Knop waarmee een dialoog zonder wijzigingen wordt gesloten." },
+  "@cancel": {
+    "description": "Knop waarmee een dialoog zonder wijzigingen wordt gesloten."
+  },
   "deletePermanently": "Permanent verwijderen",
-  "@deletePermanently": { "description": "Definitieve bevestigingsknop voor accountverwijdering." },
+  "@deletePermanently": {
+    "description": "Definitieve bevestigingsknop voor accountverwijdering."
+  },
   "authErrorInvalidEmail": "Het e-mailadres is ongeldig.",
-  "@authErrorInvalidEmail": { "description": "Veilige foutmelding voor een ongeldig e-mailadres." },
+  "@authErrorInvalidEmail": {
+    "description": "Veilige foutmelding voor een ongeldig e-mailadres."
+  },
   "authErrorInvalidCredential": "Het e-mailadres of wachtwoord is onjuist.",
-  "@authErrorInvalidCredential": { "description": "Generieke inlogfout die niet onthult of een account bestaat." },
+  "@authErrorInvalidCredential": {
+    "description": "Generieke inlogfout die niet onthult of een account bestaat."
+  },
   "authErrorEmailAlreadyInUse": "Er bestaat al een account met dit e-mailadres.",
-  "@authErrorEmailAlreadyInUse": { "description": "Foutmelding bij registratie met een bestaand e-mailadres." },
+  "@authErrorEmailAlreadyInUse": {
+    "description": "Foutmelding bij registratie met een bestaand e-mailadres."
+  },
   "authErrorWeakPassword": "Kies een sterker wachtwoord.",
-  "@authErrorWeakPassword": { "description": "Foutmelding wanneer Firebase een wachtwoord te zwak vindt." },
+  "@authErrorWeakPassword": {
+    "description": "Foutmelding wanneer Firebase een wachtwoord te zwak vindt."
+  },
   "authErrorUserDisabled": "Dit account is uitgeschakeld.",
-  "@authErrorUserDisabled": { "description": "Foutmelding voor een door een beheerder uitgeschakeld account." },
+  "@authErrorUserDisabled": {
+    "description": "Foutmelding voor een door een beheerder uitgeschakeld account."
+  },
   "authErrorTooManyRequests": "Te veel pogingen. Probeer het later opnieuw.",
-  "@authErrorTooManyRequests": { "description": "Foutmelding bij tijdelijke Firebase rate limiting." },
+  "@authErrorTooManyRequests": {
+    "description": "Foutmelding bij tijdelijke Firebase rate limiting."
+  },
   "authErrorNetwork": "Controleer je internetverbinding en probeer het opnieuw.",
-  "@authErrorNetwork": { "description": "Foutmelding wanneer een authenticatieverzoek geen netwerkverbinding heeft." },
+  "@authErrorNetwork": {
+    "description": "Foutmelding wanneer een authenticatieverzoek geen netwerkverbinding heeft."
+  },
   "authErrorOperationNotAllowed": "Deze inlogmethode is nog niet beschikbaar.",
-  "@authErrorOperationNotAllowed": { "description": "Foutmelding wanneer een Firebase-provider niet is ingeschakeld." },
+  "@authErrorOperationNotAllowed": {
+    "description": "Foutmelding wanneer een Firebase-provider niet is ingeschakeld."
+  },
   "authErrorRequiresRecentLogin": "Log opnieuw in om deze gevoelige actie uit te voeren.",
-  "@authErrorRequiresRecentLogin": { "description": "Foutmelding wanneer Firebase recente authenticatie vereist." },
+  "@authErrorRequiresRecentLogin": {
+    "description": "Foutmelding wanneer Firebase recente authenticatie vereist."
+  },
   "authErrorPasswordRequired": "Vul je huidige wachtwoord in.",
-  "@authErrorPasswordRequired": { "description": "Foutmelding wanneer herauthenticatie een wachtwoord vereist." },
+  "@authErrorPasswordRequired": {
+    "description": "Foutmelding wanneer herauthenticatie een wachtwoord vereist."
+  },
   "authErrorUnsupportedProvider": "Dit account gebruikt een niet-ondersteunde inlogmethode.",
-  "@authErrorUnsupportedProvider": { "description": "Foutmelding wanneer herauthenticatie voor de provider niet is geïmplementeerd." },
+  "@authErrorUnsupportedProvider": {
+    "description": "Foutmelding wanneer herauthenticatie voor de provider niet is geïmplementeerd."
+  },
   "authErrorCancelled": "Het inloggen is geannuleerd.",
-  "@authErrorCancelled": { "description": "Melding wanneer de gebruiker een externe inlogflow annuleert." },
+  "@authErrorCancelled": {
+    "description": "Melding wanneer de gebruiker een externe inlogflow annuleert."
+  },
   "authErrorUnknown": "Authenticatie is mislukt. Probeer het opnieuw.",
-  "@authErrorUnknown": { "description": "Veilige algemene authenticatiefout zonder technische details." },
+  "@authErrorUnknown": {
+    "description": "Veilige algemene authenticatiefout zonder technische details."
+  },
   "profileSyncFailed": "Je bent ingelogd, maar je profiel kon niet worden geladen. Probeer het opnieuw.",
-  "@profileSyncFailed": { "description": "Algemene fout bij het synchroniseren van het Firestore-profiel na authenticatie." },
+  "@profileSyncFailed": {
+    "description": "Algemene fout bij het synchroniseren van het Firestore-profiel na authenticatie."
+  },
   "profileSyncPermissionDenied": "Je bent ingelogd, maar Firestore weigert toegang tot je profiel. Controleer de gedeployde security rules.",
-  "@profileSyncPermissionDenied": { "description": "Firestore security rules blokkeren het gebruikersprofiel." },
+  "@profileSyncPermissionDenied": {
+    "description": "Firestore security rules blokkeren het gebruikersprofiel."
+  },
   "profileSyncUnavailable": "Je bent ingelogd, maar de profielopslag is tijdelijk niet bereikbaar.",
-  "@profileSyncUnavailable": { "description": "Firestore is tijdelijk niet bereikbaar." },
+  "@profileSyncUnavailable": {
+    "description": "Firestore is tijdelijk niet bereikbaar."
+  },
   "authErrorKeychain": "Firebase kan de macOS-sleutelhanger niet gebruiken. Controleer Keychain Sharing en de Apple-ondertekening.",
-  "@authErrorKeychain": { "description": "Firebase Auth kan op macOS de keychain niet benaderen." },
+  "@authErrorKeychain": {
+    "description": "Firebase Auth kan op macOS de keychain niet benaderen."
+  },
   "changePassword": "Wachtwoord wijzigen",
-  "@changePassword": { "description": "Actie en dialoogtitel voor het wijzigen van het wachtwoord." },
+  "@changePassword": {
+    "description": "Actie en dialoogtitel voor het wijzigen van het wachtwoord."
+  },
   "newPassword": "Nieuw wachtwoord",
-  "@newPassword": { "description": "Label voor het nieuwe wachtwoord." },
+  "@newPassword": {
+    "description": "Label voor het nieuwe wachtwoord."
+  },
   "confirmNewPassword": "Nieuw wachtwoord herhalen",
-  "@confirmNewPassword": { "description": "Label voor de bevestiging van het nieuwe wachtwoord." },
+  "@confirmNewPassword": {
+    "description": "Label voor de bevestiging van het nieuwe wachtwoord."
+  },
   "savePassword": "Wachtwoord opslaan",
-  "@savePassword": { "description": "Knop waarmee het nieuwe wachtwoord wordt opgeslagen." },
+  "@savePassword": {
+    "description": "Knop waarmee het nieuwe wachtwoord wordt opgeslagen."
+  },
   "passwordChanged": "Je wachtwoord is gewijzigd.",
-  "@passwordChanged": { "description": "Bevestiging na een geslaagde wachtwoordwijziging." },
+  "@passwordChanged": {
+    "description": "Bevestiging na een geslaagde wachtwoordwijziging."
+  },
   "chooseNewPassword": "Kies een nieuw wachtwoord",
-  "@chooseNewPassword": { "description": "Titel van de eigen resetpagina voor een vergeten wachtwoord." },
+  "@chooseNewPassword": {
+    "description": "Titel van de eigen resetpagina voor een vergeten wachtwoord."
+  },
   "invalidPasswordResetLink": "Deze herstellink is ongeldig of verlopen. Vraag vanuit het inlogscherm een nieuwe link aan.",
-  "@invalidPasswordResetLink": { "description": "Foutmelding voor een ontbrekende, ongeldige of verlopen wachtwoordresetcode." },
+  "@invalidPasswordResetLink": {
+    "description": "Foutmelding voor een ontbrekende, ongeldige of verlopen wachtwoordresetcode."
+  },
   "showPassword": "Wachtwoord tonen",
-  "@showPassword": { "description": "Tooltip en toegankelijkheidslabel voor het tonen van een wachtwoord." },
+  "@showPassword": {
+    "description": "Tooltip en toegankelijkheidslabel voor het tonen van een wachtwoord."
+  },
   "hidePassword": "Wachtwoord verbergen",
-  "@hidePassword": { "description": "Tooltip en toegankelijkheidslabel voor het verbergen van een wachtwoord." }
+  "@hidePassword": {
+    "description": "Tooltip en toegankelijkheidslabel voor het verbergen van een wachtwoord."
+  },
+  "@emailAddressConfirmed": { "description": "Result message for an email action link." },
+  "emailAddressConfirmed": "Het e-mailadres is bevestigd. Ga terug naar de app en controleer je verificatie of log opnieuw in.",
+  "@emailAddressRestored": { "description": "Result message for an email action link." },
+  "emailAddressRestored": "Het oorspronkelijke e-mailadres is hersteld. Log opnieuw in en wijzig je wachtwoord als je deze wijziging niet hebt aangevraagd.",
+  "@invalidEmailActionLink": { "description": "Result message for an email action link." },
+  "invalidEmailActionLink": "Deze link is ongeldig of verlopen. Vraag een nieuwe e-mail aan in de app."
 }

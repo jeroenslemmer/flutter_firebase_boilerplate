@@ -651,6 +651,24 @@ abstract class AppLocalizations {
   /// In nl, this message translates to:
   /// **'Wachtwoord verbergen'**
   String get hidePassword;
+
+  /// Result message for an email action link.
+  ///
+  /// In nl, this message translates to:
+  /// **'Het e-mailadres is bevestigd. Ga terug naar de app en controleer je verificatie of log opnieuw in.'**
+  String get emailAddressConfirmed;
+
+  /// Result message for an email action link.
+  ///
+  /// In nl, this message translates to:
+  /// **'Het oorspronkelijke e-mailadres is hersteld. Log opnieuw in en wijzig je wachtwoord als je deze wijziging niet hebt aangevraagd.'**
+  String get emailAddressRestored;
+
+  /// Result message for an email action link.
+  ///
+  /// In nl, this message translates to:
+  /// **'Deze link is ongeldig of verlopen. Vraag een nieuwe e-mail aan in de app.'**
+  String get invalidEmailActionLink;
 }
 
 class _AppLocalizationsDelegate

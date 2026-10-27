@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -8,8 +9,8 @@ import '../../l10n/app_localizations.dart';
 import 'auth_error_message.dart';
 import 'auth_provider.dart';
 
-class PasswordResetActionScreen extends ConsumerStatefulWidget {
-  const PasswordResetActionScreen({
+class EmailActionScreen extends ConsumerStatefulWidget {
+  const EmailActionScreen({
     required this.mode,
     required this.actionCode,
     super.key,
@@ -19,12 +20,10 @@ class PasswordResetActionScreen extends ConsumerStatefulWidget {
   final String? actionCode;
 
   @override
-  ConsumerState<PasswordResetActionScreen> createState() =>
-      _PasswordResetActionScreenState();
+  ConsumerState<EmailActionScreen> createState() => _EmailActionScreenState();
 }
 
-class _PasswordResetActionScreenState
-    extends ConsumerState<PasswordResetActionScreen> {
+class _EmailActionScreenState extends ConsumerState<EmailActionScreen> {
   final _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
   final _confirmationController = TextEditingController();
@@ -43,7 +42,14 @@ class _PasswordResetActionScreenState
 
   Future<void> _verifyCode() async {
     final code = widget.actionCode;
-    if (widget.mode != 'resetPassword' || code == null || code.isEmpty) {
+    if (!const {
+          'resetPassword',
+          'verifyEmail',
+          'recoverEmail',
+          'verifyAndChangeEmail',
+        }.contains(widget.mode) ||
+        code == null ||
+        code.isEmpty) {
       setState(() {
         _checking = false;
         _error = const FormatException('Invalid password reset link');
@@ -52,6 +58,18 @@ class _PasswordResetActionScreenState
     }
 
     try {
+      if (widget.mode != 'resetPassword') {
+        await ref
+            .read(authControllerProvider)
+            .applyEmailAction(code, widget.mode!);
+        if (mounted) {
+          setState(() {
+            _checking = false;
+            _completed = true;
+          });
+        }
+        return;
+      }
       final email = await ref
           .read(authControllerProvider)
           .verifyPasswordResetCode(code);
@@ -133,7 +151,11 @@ class _PasswordResetActionScreenState
           const Icon(Icons.check_circle_outline, size: 72),
           AppSpacing.gapLg,
           Text(
-            l10n.passwordChanged,
+            widget.mode == 'resetPassword'
+                ? l10n.passwordChanged
+                : widget.mode == 'recoverEmail'
+                ? l10n.emailAddressRestored
+                : l10n.emailAddressConfirmed,
             style: Theme.of(context).textTheme.headlineSmall,
             textAlign: TextAlign.center,
           ),
@@ -153,8 +175,13 @@ class _PasswordResetActionScreenState
           const Icon(Icons.link_off_outlined, size: 72),
           AppSpacing.gapLg,
           Text(
-            _error is FormatException
-                ? l10n.invalidPasswordResetLink
+            _error is FormatException ||
+                    (_error is FirebaseAuthException &&
+                        const {
+                          'invalid-action-code',
+                          'expired-action-code',
+                        }.contains((_error as FirebaseAuthException).code))
+                ? l10n.invalidEmailActionLink
                 : authErrorMessage(_error!, l10n),
             textAlign: TextAlign.center,
           ),

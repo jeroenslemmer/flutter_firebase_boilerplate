@@ -323,4 +323,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hidePassword => 'Hide password';
+
+  @override
+  String get emailAddressConfirmed =>
+      'The email address has been confirmed. Return to the app and check your verification or sign in again.';
+
+  @override
+  String get emailAddressRestored =>
+      'The original email address has been restored. Sign in again and change your password if you did not request this change.';
+
+  @override
+  String get invalidEmailActionLink =>
+      'This link is invalid or expired. Request a new email in the app.';
 }

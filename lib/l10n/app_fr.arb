@@ -91,5 +91,11 @@
   "chooseNewPassword": "Choisissez un nouveau mot de passe",
   "invalidPasswordResetLink": "Ce lien de réinitialisation n’est pas valide ou a expiré. Demandez un nouveau lien depuis l’écran de connexion.",
   "showPassword": "Afficher le mot de passe",
-  "hidePassword": "Masquer le mot de passe"
+  "hidePassword": "Masquer le mot de passe",
+  "@emailAddressConfirmed": { "description": "Result message for an email action link." },
+  "emailAddressConfirmed": "L’adresse e-mail a été confirmée. Revenez dans l’application et vérifiez votre validation ou reconnectez-vous.",
+  "@emailAddressRestored": { "description": "Result message for an email action link." },
+  "emailAddressRestored": "L’adresse e-mail d’origine a été restaurée. Reconnectez-vous et modifiez votre mot de passe si vous n’avez pas demandé ce changement.",
+  "@invalidEmailActionLink": { "description": "Result message for an email action link." },
+  "invalidEmailActionLink": "Ce lien est invalide ou a expiré. Demandez un nouvel e-mail dans l’application."
 }

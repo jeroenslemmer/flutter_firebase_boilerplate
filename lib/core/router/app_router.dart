@@ -1,9 +1,10 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/login_screen.dart';
 import '../../features/auth/email_verification_screen.dart';
-import '../../features/auth/password_reset_action_screen.dart';
+import '../../features/auth/email_action_screen.dart';
 import '../../features/shell/app_shell.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'auth_refresh_notifier.dart';
@@ -63,10 +64,20 @@ final GoRouter appRouter = GoRouter(
 
     GoRoute(
       path: '/auth/action',
-      builder: (context, state) => PasswordResetActionScreen(
-        mode: state.uri.queryParameters['mode'],
-        actionCode: state.uri.queryParameters['oobCode'],
-      ),
+      builder: (context, state) {
+        final language = state.uri.queryParameters['lang']?.split('-').first;
+        final locale = AppLocalizations.supportedLocales
+            .where((locale) => locale.languageCode == language)
+            .firstOrNull;
+        return Localizations.override(
+          context: context,
+          locale: locale,
+          child: EmailActionScreen(
+            mode: state.uri.queryParameters['mode'],
+            actionCode: state.uri.queryParameters['oobCode'],
+          ),
+        );
+      },
     ),
 
     GoRoute(

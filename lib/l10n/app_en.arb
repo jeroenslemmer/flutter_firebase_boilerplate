@@ -91,5 +91,11 @@
   "chooseNewPassword": "Choose a new password",
   "invalidPasswordResetLink": "This reset link is invalid or has expired. Request a new link from the login screen.",
   "showPassword": "Show password",
-  "hidePassword": "Hide password"
+  "hidePassword": "Hide password",
+  "@emailAddressConfirmed": { "description": "Result message for an email action link." },
+  "emailAddressConfirmed": "The email address has been confirmed. Return to the app and check your verification or sign in again.",
+  "@emailAddressRestored": { "description": "Result message for an email action link." },
+  "emailAddressRestored": "The original email address has been restored. Sign in again and change your password if you did not request this change.",
+  "@invalidEmailActionLink": { "description": "Result message for an email action link." },
+  "invalidEmailActionLink": "This link is invalid or expired. Request a new email in the app."
 }

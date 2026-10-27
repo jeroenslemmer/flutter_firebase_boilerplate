@@ -324,4 +324,16 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get hidePassword => 'Wachtwoord verbergen';
+
+  @override
+  String get emailAddressConfirmed =>
+      'Het e-mailadres is bevestigd. Ga terug naar de app en controleer je verificatie of log opnieuw in.';
+
+  @override
+  String get emailAddressRestored =>
+      'Het oorspronkelijke e-mailadres is hersteld. Log opnieuw in en wijzig je wachtwoord als je deze wijziging niet hebt aangevraagd.';
+
+  @override
+  String get invalidEmailActionLink =>
+      'Deze link is ongeldig of verlopen. Vraag een nieuwe e-mail aan in de app.';
 }

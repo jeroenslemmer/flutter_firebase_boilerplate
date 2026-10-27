@@ -64,6 +64,10 @@ class AuthController {
     return _authService.sendEmailVerification(languageCode: languageCode);
   }
 
+  Future<void> applyEmailAction(String code, String mode) {
+    return _authService.applyEmailAction(code, mode);
+  }
+
   Future<void> reloadCurrentUser() {
     return _authService.reloadCurrentUser();
   }
