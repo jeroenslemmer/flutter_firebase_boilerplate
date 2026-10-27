@@ -119,7 +119,7 @@ Vervang domein en Firebase-project voor iedere afgeleide app.
 
 ### Verificatiestatus 27 oktober 2026
 
-- `flutter analyze`: geslaagd; `flutter test`: 13 tests geslaagd.
+- `flutter analyze`: geslaagd; `flutter test`: 19 tests geslaagd.
 - Webrelease en Android debug-APK: gebouwd.
 - iOS: simulator-debugbuild gebouwd; geen fysieke-apparaattest uitgevoerd.
 - Firebase Hosting: handler gedeployed. In de browser zijn ontbrekende en
@@ -131,3 +131,11 @@ Vervang domein en Firebase-project voor iedere afgeleide app.
   gecontroleerd: `base-app-f5a6e.web.app` staat in de lijst. De huidige Action
   URL is `https://base-app-f5a6e.firebaseapp.com/__/auth/action`.
   Zie `firebase-support-action-url.md` voor het ingevulde antwoord.
+
+De schermtests controleren succesvolle verificatie, adresherstel en
+adresbevestiging, afwijzing van ongeldige/verlopen codes en wachtwoordherstel
+met overeenkomende bevestiging. Ze gebruiken een testcontroller zonder Firebase
+en bewijzen geen live codevalidatie of e-mailbezorging. Deze gedeelde Flutter-
+schermlogica wordt gebruikt op web, macOS, iOS en Android; de aanvullende tests
+zijn geen afzonderlijke apparaattests. Er is bij deze testuitbreiding geen
+productiecode gewijzigd.
