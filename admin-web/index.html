@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light"><title>Beheer · Base app</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="mark">B</span> Base app <span class="badge">Beheer</span></a><div id="identity"></div></header>
+  <main>
+    <div class="intro"><p class="eyebrow">WERKRUIMTE</p><h1>Gebruikersbeheer</h1><p>Accounts en appprofielen, op één plek.</p></div>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section id="login" class="card login" hidden>
+      <h2>Welkom terug</h2><p>Log in met je persoonlijke beheerdersaccount.</p>
+      <form id="login-form"><label>E-mailadres<input name="email" type="email" autocomplete="username" required></label>
+        <label>Wachtwoord<input name="password" type="password" autocomplete="current-password" required></label>
+        <button>Inloggen</button></form>
+      <button id="reset" class="text-button">Wachtwoord vergeten?</button>
+    </section>
+    <section id="workspace" hidden>
+      <div class="toolbar"><form id="search-form"><label class="sr-only" for="search">Zoek op exact e-mailadres of UID</label><input id="search" placeholder="Zoek op exact e-mailadres of UID" type="search"><button>Zoeken</button><button type="button" id="clear" class="secondary">Alles tonen</button></form><span id="role-label" class="badge"></span></div>
+      <div class="columns"><section class="card users"><div class="section-heading"><h2>Gebruikers</h2><span id="count"></span></div><div id="users"></div><button id="next" class="secondary" hidden>Volgende pagina</button></section>
+        <section class="card detail" id="detail"><h2>Accountdetails</h2><p class="muted">Selecteer een gebruiker om het account en Firestore-profiel te bekijken.</p></section></div>
+    </section>
+  </main><footer>Base app · Beheeromgeving</footer>
+  <script type="module" src="app.js"></script>
+</body></html>

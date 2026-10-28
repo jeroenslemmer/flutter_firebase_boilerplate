@@ -194,3 +194,15 @@ test('undeclared collections are inaccessible', async () => {
 
   await assertFails(setDoc(doc(db, 'private', 'document'), { value: true }));
 });
+
+
+test('French profiles work and clients cannot read or modify admin roles or audit logs', async () => {
+  const db = testEnvironment.authenticatedContext('alice', {role: 'admin'}).firestore();
+  await assertSucceeds(setDoc(doc(db, 'users', 'alice'), validProfile({language: 'fr'})));
+  await assertFails(updateDoc(doc(db, 'users', 'alice'), {role: 'admin'}));
+  for (const collectionName of ['adminAccess', 'adminAudit']) {
+    await assertFails(getDoc(doc(db, collectionName, 'alice')));
+    await assertFails(setDoc(doc(db, collectionName, 'alice'), {role: 'admin'}));
+    await assertFails(getDocs(collection(db, collectionName)));
+  }
+});

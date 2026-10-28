@@ -61,6 +61,12 @@ Start de lokale vertaaleditor in VS Code via **Terminal → Run Task →
 Translations: Edit English**.
 
 ## Release
+
+De aparte beheerwebapp ondersteunt admins, gebruikersbeheerders en users, met
+accountbeheer en het aanpassen van Firestore-profielen. Zie
+[installatie, beveiliging en platformtests](docs/admin-web-app-setup.md).
+Beheer wordt afzonderlijk gedeployed; de gewone appdeployment publiceert deze niet.
+
 - web app (host): flutter build web --releasename: flutter_firebase_boilerplate
 
 Authenticatiemails gebruiken de browserhandler `/auth/action` op web, macOS,

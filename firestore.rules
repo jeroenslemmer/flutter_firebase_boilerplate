@@ -32,7 +32,7 @@ service cloud.firestore {
         && data.lastLogin is timestamp
         && data.profileComplete is bool
         && data.language is string
-        && data.language in ['nl', 'en']
+        && data.language in ['nl', 'en', 'fr']
         && data.themeMode is string
         && data.themeMode in ['system', 'light', 'dark'];
     }

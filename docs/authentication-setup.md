@@ -139,3 +139,11 @@ en bewijzen geen live codevalidatie of e-mailbezorging. Deze gedeelde Flutter-
 schermlogica wordt gebruikt op web, macOS, iOS en Android; de aanvullende tests
 zijn geen afzonderlijke apparaattests. Er is bij deze testuitbreiding geen
 productiecode gewijzigd.
+
+
+## 7. Beheer en rollen
+
+De aparte [beheerwebapp](admin-web-app-setup.md) gebruikt dezelfde Authentication-
+accounts en Firestore-profielen. Beheerrollen zijn geen door gebruikers wijzigbare
+profielvelden. De handleiding beschrijft bootstrap, rechten, deployment en
+acceptatietests op web, macOS, iOS en Android.
