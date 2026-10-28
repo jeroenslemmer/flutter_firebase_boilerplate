@@ -66,8 +66,18 @@ De aparte beheerwebapp ondersteunt admins, gebruikersbeheerders en users, met
 accountbeheer en het aanpassen van Firestore-profielen. Zie
 [installatie, beveiliging en platformtests](docs/admin-web-app-setup.md).
 Beheer wordt afzonderlijk gedeployed; de gewone appdeployment publiceert deze niet.
+Voor eigen hosting, zoals een Strato-subdomein, maak je met
+`python3 tool/package_admin_web.py` een uploadpakket. Zie de
+[Strato-installatiehandleiding](docs/admin-strato-install.md).
 
 - web app (host): flutter build web --releasename: flutter_firebase_boilerplate
 
 Authenticatiemails gebruiken de browserhandler `/auth/action` op web, macOS,
 iOS en Android. Zie [configuratie en acceptatietests](docs/authentication-setup.md#6-gedeelde-action-url), inclusief de vereiste Firebase Support-wijziging.
+
+## Beheerapp lokaal testen op Windows
+
+Maak met `python3 tool/package_admin_windows.py` een deelbaar testpakket.
+Pak `build/admin-windows-test.zip` op de Windows-pc uit en start `start.cmd`.
+Node.js 22 en Java 21+ zijn eenmalig nodig; Blaze en productieaccounts niet.
+Zie [de Windows-testhandleiding](docs/admin-windows-test.md).

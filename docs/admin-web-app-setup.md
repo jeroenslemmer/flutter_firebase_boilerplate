@@ -178,3 +178,19 @@ Voer op web/desktop (macOS), Safari op iOS en Chrome op Android uit:
 - Controleer dat profieldata na uitloggen uit de interface verdwijnt.
 
 Zie de voortgang in het ontwerpdocument voor de daadwerkelijk uitgevoerde checks.
+
+
+## Alternatief: website hosten bij Strato
+
+De statische website kan ook op eigen webspace staan, terwijl Authentication,
+Firestore en Cloud Functions in Firebase blijven. Gebruik het
+[Strato-uploadpakket en stappenplan](admin-strato-install.md). Deploy in dat
+geval alleen Firebase-regels en functions; een Firebase Hosting-site is niet nodig.
+
+
+## Testpakket voor een tweede Windows-pc
+
+Gebruik [het Windows-testpakket](admin-windows-test.md) voor een lokale demo
+zonder productieconfiguratie, met een startbestand, tijdelijke demo-accounts
+en lokale Auth-/Firestore-/Functions-emulators. Python en Flutter zijn op de
+Windows-testmachine niet nodig.
